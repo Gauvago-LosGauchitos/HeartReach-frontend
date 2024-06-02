@@ -146,10 +146,13 @@ export const Register = () => {
             <AnimatePresence>
                 <motion.div
                     className='container'
-                    initial={{ opacity: 0, x: -200 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 200 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ scale: 0 }}
+                    animate={{  scale: 1 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20
+                    }}
                 >
                     <div className='arrForm'>
                         <img className='logo' src={logo} />

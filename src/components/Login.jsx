@@ -16,7 +16,7 @@ import { useAuth } from '../shared/hooks/useAuth.jsx';
 
 export const Login = () => {
   const navigate = useNavigate();
-  const {login, isLoading} = useAuth()
+  const { login, isLoading } = useAuth()
 
   const [formData, setFormData] = useState({
     identifier: {
@@ -67,10 +67,10 @@ export const Login = () => {
     navigate('/register');
   };
 
-  const handleLogin = async (e) =>{
+  const handleLogin = async (e) => {
     e.preventDefault()
     const success = await login(formData.identifier.value, formData.password.value)
-    if(success){
+    if (success) {
       navigate('/home')
     }
 
@@ -80,35 +80,38 @@ export const Login = () => {
     <div className='bodyAuth'>
       <motion.div
         className='container'
-        initial={{ opacity: 0, x: 200 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -200 }}
-        transition={{ duration: 0.5 }}
+        initial={{ scale: 0 }}
+        animate={{  scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20
+        }}
       >
         <div className='arrform'>
           <img className='logo' src={logo} />
           <div className="title">Bienvenido,<br /><span>Logueate para continuar tu aventura</span></div>
           <div className='input-column'>
-          <Input
-            field='identifier'
-            label='Email or Username'
-            value={formData.identifier.value}
-            onChangeHandler={handleValueChange}
-            type='text'
-            onBlurHandler={handleValidationOnBlur}
-            showErrorMessage={formData.identifier.showError}
-            validationMessage={identifierValidationMessage}
-          />
-          <Input
-            field='password'
-            label='Password'
-            value={formData.password.value}
-            onChangeHandler={handleValueChange}
-            type='password'
-            onBlurHandler={handleValidationOnBlur}
-            showErrorMessage={formData.password.showError}
-            validationMessage={passwordValidationMessage}
-          />
+            <Input
+              field='identifier'
+              label='Email or Username'
+              value={formData.identifier.value}
+              onChangeHandler={handleValueChange}
+              type='text'
+              onBlurHandler={handleValidationOnBlur}
+              showErrorMessage={formData.identifier.showError}
+              validationMessage={identifierValidationMessage}
+            />
+            <Input
+              field='password'
+              label='Password'
+              value={formData.password.value}
+              onChangeHandler={handleValueChange}
+              type='password'
+              onBlurHandler={handleValidationOnBlur}
+              showErrorMessage={formData.password.showError}
+              validationMessage={passwordValidationMessage}
+            />
           </div>
 
           <button onClick={handleLogin} className="button-confirmLogin">Let's go →</button>
