@@ -26,3 +26,11 @@ export const loginRequest = async(userLogin) =>{
     }
 }
 
+export const getOrgs = async() =>{
+    try {
+        return await apiClient.get('/org/get')
+    } catch (error) {
+        error: true,
+        error
+    }
+}
