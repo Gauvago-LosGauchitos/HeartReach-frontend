@@ -8,9 +8,16 @@ export const OrganizationView = () => {
   const { org, isLoading } = useOrganization();
   const navigate = useNavigate();
 
+  // Verificar la estructura de los datos
   console.log('Organization data:', org);
 
-  const organizations = org.organizations ? [org.organizations] : []; // Convertimos el objeto en un array para mapear
+  // Verificar si org.organizations es un array o un objeto
+  let organizations = [];
+  if (org && org.organizations) {
+    organizations = Array.isArray(org.organizations) ? org.organizations : [org.organizations];
+  }
+
+  console.log('Organizations array:', organizations);
 
   return (
     <div className='body'>
@@ -24,19 +31,20 @@ export const OrganizationView = () => {
       <div>
         <section>
           <h2 className="section__header">Escoje tu proximo voluntariado</h2>
-          <div>
+          <div className='object'>
             {!isLoading && organizations.map((orgItem, index) => (
-              <div key={index} style={{ border: '1px solid black' }}>
+              <div key={index} style={{ border: '1px solid black' }} className='target'>
                 <div>
-                  <img src={ImgDefault} alt="Organization Logo" />
+                  <img src={ImgDefault} alt="Organization Logo" className='img'/>
                   <div>
-                    <label>
-                      <input type="checkbox" />
-                    </label>
+                    <h1>{orgItem?.name || "Nombre no disponible"}</h1> {/* Aquí mostramos el nombre de la organización */}
+                    {console.log("Org item:", orgItem)}
+                    <p>{orgItem?.description || "Descripción no disponible"}</p> 
+                    <h1>{index}</h1>
                   </div>
                 </div>
                 <div>
-                  <h1>{orgItem.name}</h1>
+                  {/* Otros elementos */}
                 </div>
               </div>
             ))}
