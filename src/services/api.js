@@ -35,3 +35,13 @@ export const getOrgs = async() =>{
         error
     }
 }
+
+export const getOrgId = async(orgId) =>{
+    try {
+        const response = await apiClient.post('/org/searchById' ,{id:orgId})
+        return response.data
+    } catch (error) {
+        error : true,
+        error
+    }
+}
