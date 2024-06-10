@@ -43,8 +43,8 @@ export const OrganizationView = () => {
                   <div>
                     <h1>{orgItem?.name || "Nombre no disponible"}</h1> {/* Aquí mostramos el nombre de la organización */}
                     {console.log("Org item:", orgItem)}
-                    <p>{orgItem?.description || "Descripción no disponible"}</p> 
-                    <h1>{index}</h1>
+                    <p>Dirección: {orgItem?.address || "Correo no disponible"}</p>
+                    <p>Telefono: {orgItem?.phone || "Telefono no disponible"}</p>
                   </div>
                 </div>
                 <div>
