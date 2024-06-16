@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .bodyAuth {
     display: flex;
     align-items: center;
