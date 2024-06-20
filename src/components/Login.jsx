@@ -1,136 +1,214 @@
-import imgLog from '../assets/img/imgAuth.png';
-import logo from '../assets/img/logo.png';
-import jardin from '../assets/img/jardin.png';
-import { Input } from './Input';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import {
-  identifierValidationMessage,
-  passwordValidationMessage,
-  validateIdentifier,
-  validateUsername,
-  validatePassword,
-} from "../shared/validators/validator.js";
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../shared/hooks/useAuth.jsx';
+import { useAuth } from '../shared/hooks/useAuth';
+import logo from '../assets/img/logo.png';
+import image from '../assets/img/imgAuth.png'
+import image2 from '../assets/img/jardin.png'
 
 export const Login = () => {
+  const [containerClass, setContainerClass] = useState('');
   const navigate = useNavigate();
-  const { login, isLoading } = useAuth()
+  const { login, register } = useAuth();
 
-  const [formData, setFormData] = useState({
-    identifier: {
-      value: '',
-      isValid: false,
-      showError: false
-    },
-    password: {
-      value: '',
-      isValid: false,
-      showError: false
-    }
-  });
-
-  const handleValueChange = (value, field) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: {
-        ...prevData[field],
-        value
-      }
-    }));
+  const handleSignUpClick = () => {
+    setContainerClass('sign-up-mode');
   };
 
-  const handleValidationOnBlur = (value, field) => {
-    let isValid = false;
-    switch (field) {
-      case 'identifier':
-        isValid = validateIdentifier(value);
-        break;
-      case 'password':
-        isValid = validatePassword(value);
-        break;
-      default:
-        break;
-    }
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: {
-        ...prevData[field],
-        isValid,
-        showError: !isValid
-      }
-    }));
-  };
-
-  const handleNavigateToRegister = () => {
-    navigate('/register');
+  const handleSignInClick = () => {
+    setContainerClass('');
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault()
-    const success = await login(formData.identifier.value, formData.password.value)
+    e.preventDefault();
+    const success = await login(formData.identifier, formData.password);
     if (success) {
-      navigate('/home')
+      navigate('/home');
     }
+  };
 
-  }
+  const [formData, setFormData] = useState({
+    identifier: '',
+    password: '',
+    name: '',
+    surname: '',
+    dpi: '',
+    username: '',
+    email: '',
+    phone: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const success = await register(
+      formData.name,
+      formData.surname,
+      formData.dpi,
+      formData.username,
+      formData.password,
+      formData.email,
+      formData.phone
+    );
+    if (success) {
+      navigate('/home');
+    }
+  };
 
   return (
-    <div className='bodyAuth'>
-      <motion.div
-        className='container'
-        initial={{ scale: 0 }}
-        animate={{  scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20
-        }}
-      >
-        <div className='arrform'>
-          <img className='logo' src={logo} />
-          <div className="title">Bienvenido,<br /><span>Logueate para continuar tu aventura</span></div>
-          <div className='input-column'>
-            <Input
-              field='identifier'
-              label='Email or Username'
-              value={formData.identifier.value}
-              onChangeHandler={handleValueChange}
-              type='text'
-              onBlurHandler={handleValidationOnBlur}
-              showErrorMessage={formData.identifier.showError}
-              validationMessage={identifierValidationMessage}
-            />
-            <Input
-              field='password'
-              label='Password'
-              value={formData.password.value}
-              onChangeHandler={handleValueChange}
-              type='password'
-              onBlurHandler={handleValidationOnBlur}
-              showErrorMessage={formData.password.showError}
-              validationMessage={passwordValidationMessage}
+    <div className={`container ${containerClass}`}>
+      <div className="signin-signup">
+        <form className="sign-in-form" onSubmit={handleLogin}>
+          <h2 className="title">Login</h2>
+          <div className="input-field">
+            <i className="fas fa-user"></i>
+            <input
+              type="text"
+              name="identifier"
+              placeholder="Username or Email"
+              value={formData.identifier}
+              onChange={handleChange}
+              required
             />
           </div>
-
-          <button onClick={handleLogin} className="button-confirmLogin">Let's go →</button>
-          <span className="btn-link" onClick={handleNavigateToRegister}>
-            ¿Ya tienes una cuenta? ¡Inicia sesión acá!
-          </span>
-          <img src={jardin} alt="Tree" className="bottom-left-img" />
-        </div>
-
-        <div className="panels-container">
-          <div className="panel-background"></div>
-          <div className="panel-overlay"></div>
-          <div className="panel-content">
-            <div className='ven-text'>Ven!!!</div>
-            <div className="panel-text">Únete y busca tu próximo voluntariado!!</div>
-            <img src={imgLog} alt="Volunteer" />
+          <div className="input-field">
+            <i className="fas fa-lock"></i>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
           </div>
+          <p className="account-text">
+            No tienes una cuenta?{' '}
+            <a href="#" onClick={handleSignUpClick} id="sign-up-btn2">
+              Registrate
+            </a>
+          </p>
+          <button type="submit" className="btnAuth">Login</button>
+        </form>
+
+        <form className="sign-up-form" onSubmit={handleRegister}>
+          <h2 className="title">Registro</h2>
+          <div className="input-group">
+            <div className="input-field">
+            <i className="fas fa-lock"></i>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+            <i className="fas fa-lock"></i>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="input-group">
+            <div className="input-field">
+            <i className="fas fa-lock"></i>
+              <input
+                type="text"
+                name="surname"
+                placeholder="Surname"
+                value={formData.surname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+            <i className="fas fa-lock"></i>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="input-group">
+            <div className="input-field">
+            <i className="fas fa-lock"></i>
+              <input
+                type="text"
+                name="dpi"
+                placeholder="DPI"
+                value={formData.dpi}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+            <i className="fas fa-lock"></i>
+              
+              <input
+              type="text"
+              name="phone"
+              placeholder="Phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+            </div>
+          </div>
+          <div className="input-field">
+          <i className="fas fa-lock"></i>
+          <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+          </div>
+          <p className="account-text">
+            Ya tienes una cuenta?{' '}
+            <a href="#" onClick={handleSignInClick} id="sign-in-btn2">
+              Logueate
+            </a>
+          </p>
+          <button type="submit" className="btnAuth">Registrate</button>
+        </form>
+      </div>
+
+      <div className="panels-container">
+        <div className="panel left-panel">
+          <div className="content">
+            <h3>¿Miembro ya?</h3>
+            <p>Logueate y continua tu aventura!</p>
+            <button className="btnAuth" onClick={handleSignInClick}>Ingresa!</button>
+          </div>
+          <img src={image2} className="image" alt="" />
         </div>
-      </motion.div>
+        <div className="panel right-panel">
+          <div className="content">
+            <h3>¿Nuevo por aquí?</h3>
+            <p>Registrate para iniciar tu aventura!!</p>
+            <button className="btnAuth" onClick={handleSignUpClick}>Unete!</button>
+          </div>
+          <img src={image} className="image" alt="" />
+        </div>
+      </div>
     </div>
   );
 };
+

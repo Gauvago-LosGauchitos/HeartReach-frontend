@@ -4,7 +4,7 @@ import personaTexto from '../../assets/img/personaTexto.png';
 import ScrollReveal from 'scrollreveal';
 import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
-import  {MapComponent}  from '../../assets/mapContent';
+import { MapComponent } from '../../assets/mapContent';
 
 export const HomePage = () => {
 
@@ -54,16 +54,13 @@ export const HomePage = () => {
                     <div className="header__btn">
                         <button className="btn">Learn More</button>
                     </div>
-                    <ul className="socials">
-                        <li>
-                            <a href="#"><i className="ri-facebook-circle-fill"></i></a>
-                        </li>
-                    </ul>
+                    
                 </div>
             </header>
+            
 
             <section className="volunteers">
-                <h2>Volunteers</h2>
+                <h2>Voluntariados</h2>
                 <div className="volunteer-options">
                     <div className="option">
                         <img src="https://via.placeholder.com/150" alt="Recolección de Basura en Playa" />
@@ -87,6 +84,59 @@ export const HomePage = () => {
             <section className="map-section">
                 <h2>Encuentra Voluntariados Cerca de Ti</h2>
                 <MapComponent />
+            </section>
+
+            <section className="testimonials">
+                <h2>Testimonios</h2>
+                <div className="testimonials-content">
+                    <div className="testimonial">
+                        <p>"Fue una experiencia increíble. Me encantó poder ayudar a la comunidad y conocer a nuevas personas."</p>
+                        <h4>- Usuario 1</h4>
+                    </div>
+                    <div className="testimonial">
+                        <p>"El voluntariado me permitió crecer como persona y entender mejor las necesidades de los demás."</p>
+                        <h4>- Usuario 2</h4>
+                    </div>
+                    <div className="testimonial">
+                        <p>"Recomiendo totalmente unirse a estas actividades. Es gratificante y muy enriquecedor."</p>
+                        <h4>- Usuario 3</h4>
+                    </div>
+                </div>
+            </section>
+
+            <section className="impact-stats">
+                
+                <h2>Nuestro Impacto</h2>
+                <div className="stats">
+                    <div className="stat">
+                        <h3>500+</h3>
+                        <p>Voluntarios Activos</p>
+                    </div>
+                    <div className="stat">
+                        <h3>1200+</h3>
+                        <p>Proyectos Completados</p>
+                    </div>
+                    <div className="stat">
+                        <h3>50+</h3>
+                        <p>Organizaciones Asociadas</p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="newsletter">
+                <h2>Suscríbete a Nuestro Newsletter</h2>
+                <form className="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" />
+                    <button type="submit" className="btn">Suscribirse</button>
+                </form>
+            </section>
+
+            <section className="leave-testimonial">
+                <h2>Deja tu Testimonio</h2>
+                <form className="testimonial-form">
+                    <textarea placeholder="Escribe tu testimonio aquí..." rows="5"></textarea>
+                    <button type="submit" className="btn">Enviar</button>
+                </form>
             </section>
 
             <Footer/>
