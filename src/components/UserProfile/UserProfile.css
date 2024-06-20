@@ -1,0 +1,127 @@
+/* Fuente */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&style=italic&display=swap');
+
+/* Contenedor Principal */
+.user-profile-container {
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #dcdbc4; /* Fondo verde claro */
+    color: #000000; /* Color de texto negro */
+    position: relative; /* Añadido para facilitar el posicionamiento absoluto */
+    font-family: 'Roboto', sans-serif; /* Aplicamos la fuente */
+}
+
+/* Contenedor del Perfil de Usuario */
+.user-profile-card {
+    width: 1800px; /* Ancho del contenedor del perfil */
+    padding: 250px;
+    border-radius: 15px;
+    background: #fbf4f3; /* Fondo beige claro */
+    display: flex;
+    top: 250px;
+    left: 40px;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between; /* Alineación del contenido con espacio entre elementos */
+    font-family: 'Roboto', sans-serif; /* Aplicamos la fuente */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: relative;
+    z-index: 1; /* Asegura que el card esté encima */
+}
+
+/* Imagen de Perfil */
+.user-profile-image {
+    width: 300px; /* Ancho del contenedor de la imagen */
+    height: 300px; /* Alto del contenedor de la imagen */
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute; /* Posicionamiento absoluto */
+    top: -180px; /* Ajusta la posición vertical de la imagen */
+    left: calc(50% - 330px); /* Ajusta la posición horizontal de la imagen */
+    z-index: 2; /* Asegura que la imagen esté encima del card */
+}
+
+.user-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Datos del Usuario */
+.user-profile-details {
+    flex-grow: 1;
+    padding: 20px 0; /* Ajusta el espacio de relleno para centrar el texto */
+    text-align: right; /* Alinea el texto a la derecha */
+    margin-right: 10%; /* Ajuste del margen derecho */
+    margin-top: 20px;
+}
+
+.user-profile-details h2 {
+    margin-bottom: 10px; /* Espacio inferior para separar del contenido */
+    font-weight: 900;
+    font-size: 30px; /* Tamaño de fuente más grande */
+    font-style: italic; /* Añadimos el estilo itálico */
+    color: #2f2b20; /* Color de texto negro */
+    margin-right: 12%; /* Ajuste del margen derecho solo para el nombre de usuario */
+}
+
+.user-profile-details p {
+    margin: 5px 0;
+    font-size: 16px; /* Tamaño de fuente para los datos */
+    color: #424242; /* Color de texto gris oscuro */
+}
+
+/* Voluntariado Asignado */
+.assigned-volunteer {
+    width: 50%; /* Ancho reducido a la mitad */
+    background: #C5C4A6; /* Fondo gris verdoso */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center; /* Alineación del texto a la izquierda */
+    margin-top: -50px;
+    margin-left: 30px; /* Ajuste de margen a la izquierda */
+}
+
+.assigned-volunteer p {
+    margin: 5px 0;
+    font-size: 14px; /* Tamaño de fuente reducido */
+    color: #000000; /* Color de texto negro */
+}
+
+/* Círculo encima del nombre */
+.profile-circle {
+    position: absolute;
+    top: -50px; /* Ajusta la posición vertical del círculo */
+    left: 90%; /* Centra el círculo horizontalmente */
+    transform: translateX(-50%); /* Ajusta la posición horizontal del círculo */
+    width: 90px; /* Tamaño del círculo */
+    height: 90px; /* Tamaño del círculo */
+    background-color: #746C54; /* Color de fondo del círculo */
+    border-radius: 50%; /* Hace el círculo redondeado */
+    z-index: 3; /* Asegura que esté por encima de la imagen de perfil */
+}
+
+/* Botón de Regreso */
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.back-button button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #746C54; /* Fondo gris azulado */
+    color: #FFFFFF; /* Color de texto blanco */
+    font-family: 'Roboto', sans-serif; /* Aplicamos la fuente */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button button:hover {
+    background-color: #455A64; /* Cambiamos el color de fondo al pasar el ratón */
+}

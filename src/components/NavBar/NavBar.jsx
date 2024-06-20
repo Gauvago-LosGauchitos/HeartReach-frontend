@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../assets/img/logo.png';
+import { useNavigate } from 'react-router-dom';
 import search from '../../assets/img/search.png';
 import profileIcon from '../../assets/img/profileIcon.png'; 
 import logoutIcon from '../../assets/img/logOutIcon.png'; 
@@ -7,9 +8,14 @@ import './NavBar.css';
 
 export const NavBar = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
+    const navigate = useNavigate();
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
+    };
+
+    const handleProfileClick = () => {
+        navigate('/userProfile');
     };
 
     return (
@@ -34,7 +40,7 @@ export const NavBar = () => {
                                 <div className="user-name">John Doe</div>
                             </div>
                             <div className="dropdown-links">
-                                <a href="#" className="dropdown-link">
+                                <a href="#" className="dropdown-link" onClick={handleProfileClick}>
                                     <img src={profileIcon} alt="Profile Icon" className="dropdown-icon" /> Profile
                                 </a>
                                 <a href="#" className="dropdown-link">
