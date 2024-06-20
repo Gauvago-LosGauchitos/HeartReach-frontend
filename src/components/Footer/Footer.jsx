@@ -35,16 +35,14 @@ export const Footer = () => {
                     </div>
                     <div>
                         <i class="fa fa-envelope"></i>
-                        <p><a href="mailto:sagar00001.co@gmail.com">heartreach@gmail.com</a></p>
+                        <p><a href="#">heartreach@gmail.com</a></p>
                     </div>
                 </div>
                 <div class="footer-right">
                     <p class="footer-company-about">
-                        <span>About the company</span>
-                        <strong>HeartReach</strong> is a Youtube channel where you can find more creative CSS Animations
-                        and
-                        Effects along with
-                        HTML, JavaScript and Projects using C/C++.
+                        <span>Sobre Nosotros</span>
+                        <strong>HeartReach</strong> es una empresa que nos centramos en facilitar
+                        la posibilidad de la ayuda social.
                     </p>
                     <div class="footer-icons">
                         <ul class="example-2">
