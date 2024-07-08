@@ -23,6 +23,8 @@ export const InfoOrganization = () => {
         };
         fetchData();
     }, []);
+    
+    console.log(selectedOrg)
 
     return (
         <body className='body-infoxd'>  
