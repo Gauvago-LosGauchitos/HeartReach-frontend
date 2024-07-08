@@ -59,6 +59,7 @@ export const Login = () => {
   };
 
   return (
+    <div className='bodyL'>
     <div className={`container ${containerClass}`}>
       <div className="signin-signup">
         <form className="sign-in-form" onSubmit={handleLogin}>
@@ -208,6 +209,7 @@ export const Login = () => {
           <img src={image} className="image" alt="" />
         </div>
       </div>
+    </div>
     </div>
   );
 };
