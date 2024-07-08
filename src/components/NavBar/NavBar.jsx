@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import search from '../../assets/img/search.png';
 import profileIcon from '../../assets/img/profileIcon.png'; 
@@ -7,6 +8,16 @@ import './NavBar.css';
 
 export const NavBar = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const navigate = useNavigate()
+
+    const handleHome = () =>{
+        navigate('/home')
+    }
+
+    const handleAbout = () =>{
+        navigate('/AboutUs')
+    }
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -23,8 +34,8 @@ export const NavBar = () => {
                 </div>
             </div>
             <div className="right-section">
-                <a href="#" className="nav-link">Inicio</a>
-                <a href="#" className="nav-link">¿Quiénes somos?</a>
+                <a onClick={handleHome} href="#" className="nav-link">Inicio</a>
+                <a onClick={handleAbout} href='#' className="nav-link">¿Quiénes somos?</a>
                 <div className="user-menu" onClick={toggleDropdown}>
                     <img src="https://placehold.co/30x30" alt="user icon" className="user-image" />
                     {dropdownVisible && (

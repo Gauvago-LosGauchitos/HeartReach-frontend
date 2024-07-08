@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
+import { useNavigate } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
 import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
+import { color } from 'framer-motion';
 
 export const HomePage = () => {
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const scrollRevealOption = {
@@ -33,9 +37,13 @@ export const HomePage = () => {
         });
     }, []);
 
+    const handleAbout = () =>{
+        navigate('/AboutUs')
+    }
+
     return (
         <div className='bodyHomePage'>
-            <NavBar/>
+            <NavBar />
             <header className="header__container">
                 <div className="header__image">
                     <img src={personaTexto} alt="header" />
@@ -47,17 +55,17 @@ export const HomePage = () => {
                         <span className="h1__span-2">para todos</span>
                     </h1>
                     <p>
-                        Buscamos que las personas interesadas en contribuir con causas sociales puedan tener un acceso 
-                        más rápido y eficaz a estos voluntariados; así como ayudar a las organizaciones que promueven 
+                        Buscamos que las personas interesadas en contribuir con causas sociales puedan tener un acceso
+                        más rápido y eficaz a estos voluntariados; así como ayudar a las organizaciones que promueven
                         estos mismos a darse conocer y conseguir la ayuda necesaria.
                     </p>
                     <div className="header__btn">
-                        <button className="btn">Learn More</button>
+                        <button onClick={handleAbout} className="btn">Conocenos!</button>
                     </div>
-                    
+                   
                 </div>
             </header>
-            
+
 
             <section className="volunteers">
                 <h2>Voluntariados</h2>
@@ -74,12 +82,12 @@ export const HomePage = () => {
                         <img src="https://via.placeholder.com/150" alt="Entrega de víveres" />
                         <p>Entrega de víveres</p>
                     </div>
-                    <div className="option">
+                    <div className="option">    
                         <img src="https://via.placeholder.com/150" alt="Visita a adultos mayores" />
                         <p>Visita a adultos mayores</p>
                     </div>
                 </div>
-            </section>  
+            </section>
 
             <section className="map-section">
                 <h2>Encuentra Voluntariados Cerca de Ti</h2>
@@ -105,7 +113,7 @@ export const HomePage = () => {
             </section>
 
             <section className="impact-stats">
-                
+
                 <h2>Nuestro Impacto</h2>
                 <div className="stats">
                     <div className="stat">
@@ -139,7 +147,7 @@ export const HomePage = () => {
                 </form>
             </section>
 
-            <Footer/>
+            <Footer />
         </div>
     );
 };
