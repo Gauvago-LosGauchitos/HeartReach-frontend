@@ -56,16 +56,16 @@ export const UserEditProfile = () => {
                     {isLoading ? (
                         <p>Cargando usuario...</p>
                     ) : (
-                        <div className="user-profile-card">
-                            <div className="user-profile-details">
-                                <div className="profile-circle"></div>
-                                <div className="user-profile-image">
+                        <div className="user-profile-card2">
+                            <div className="user-profile-details2">
+                                <div className="profile-circle2"></div>
+                                <div className="user-profile-image2">
                                     {user.imageProfile && (
-                                        <img src={user.imageProfile} alt="Imagen de Perfil" />
+                                        <img src={user.imageProfile} alt="Imagen de Perfil2" />
                                     )}
                                 </div>
-                                <div className='user-profile-data'>
-                                    <div className='data-volunteer'>
+                                <div className='user-profile-data2'>
+                                    <div className='data-volunteer2'>
                                         <h2>{user.name} {user.surname}</h2>
                                         <p>
                                             <label>Correo electrónico:</label>
@@ -109,7 +109,7 @@ export const UserEditProfile = () => {
                                         </p>
                                     </div>
 
-                                    <div className="assigned-volunteer">
+                                    <div className="assigned-volunteer2">
                                         <p><strong>HABILIDADES:</strong></p>
                                         <textarea
                                             name="habilities"
@@ -120,7 +120,7 @@ export const UserEditProfile = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="edit-button-container">
+                            <div className="edit-button-container2">
                                 <button onClick={toggleEdit}>
                                     {isEditable ? 'Guardar' : 'Editar'}
                                 </button>
