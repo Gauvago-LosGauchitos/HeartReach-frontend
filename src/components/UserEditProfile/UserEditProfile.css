@@ -1,0 +1,139 @@
+/* Fuente */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet');
+
+/* Body Principal */
+.bodyU {
+    background-color: #dcdbc4; /* Color beige oscuro */
+}
+
+/* Contenedor Principal */
+.user-profile-container {
+    width: 100%;
+    height: 92vh;
+    justify-content: center;
+    align-items: center;
+    color: #000000; /* Color de texto negro */
+    position: relative; /* Añadido para facilitar el posicionamiento absoluto */
+    font-family: "Courier New", monospace; /* Aplicamos la fuente */
+}
+
+/* Contenedor del Perfil de Usuario */
+.user-profile-card {
+    width: 1300px; /* Ancho del contenedor del perfil */
+    padding: 220px;
+    border-radius: 30px;
+    background: #fbf4f3; /* Fondo beige claro */
+    display: flex;
+    top: 278px;
+    left: 300px;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between; /* Alineación del contenido con espacio entre elementos */
+    font-family: "Courier New", monospace; /* Aplicamos la fuente */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: relative;
+    z-index: 1; /* Asegura que el card esté encima */
+}
+
+/* Imagen de Perfil */
+.user-profile-image {
+    width: 450px; /* Ancho del contenedor de la imagen */
+    height: 450px; /* Alto del contenedor de la imagen */
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute; /* Posicionamiento absoluto */
+    top: -210px; /* Ajusta la posición vertical de la imagen */
+    left: calc(50% - 600px); /* Ajusta la posición horizontal de la imagen */
+    z-index: 2; /* Asegura que la imagen esté encima del card */
+}
+
+.user-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Datos del Usuario */
+.user-profile-details {
+    flex-grow: 1;
+    padding: 20px 0; /* Ajusta el espacio de relleno para centrar el texto */
+    text-align: left; /* Alinea el texto a la derecha */
+    margin-left: 50px; /* Ajuste del margen izquierdo */
+    margin-top: -10px;
+}
+
+.user-profile-details h2 {
+    margin-bottom: 10px; /* Espacio inferior para separar del contenido */
+    margin-left: 400px;
+    font-weight: 900;
+    font-size: 55px; /* Tamaño de fuente más grande */
+    font-style: italic; /* Añadimos el estilo itálico */
+    color: #2f2b20; /* Color de texto negro */
+    margin-right: 8%; /* Ajuste del margen derecho solo para el nombre de usuario */
+}
+
+.user-profile-details p {
+    margin-left: 400px;
+    font-size: 24px; /* Tamaño de fuente para los datos */
+    color: #424242; /* Color de texto gris oscuro */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-profile-details input, 
+.user-profile-details textarea {
+    font-size: 24px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Voluntariado Asignado */
+.assigned-volunteer {
+    width: 48%; /* Ancho del contenedor */
+    background: #C5C4A6; /* Fondo gris verdoso */
+    padding: 10px;
+    border-radius: 40px;
+    text-align: center; /* Alineación del texto al centro */
+    margin-top: -200px;
+    margin-left: -250px; /* Ajuste de margen a la izquierda */
+}
+
+.assigned-volunteer textarea {
+    width: 100%;
+    height: 150px; /* Altura inicial */
+    max-height: 300px; /* Altura máxima permitida */
+    min-height: 150px; /* Altura mínima */
+    resize: vertical; /* Permitir solo el cambio de tamaño vertical */
+    padding: 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #000000; /* Color de texto negro */
+}
+
+/* Botón de Edición */
+.edit-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.edit-button, .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #746C54; /* Fondo gris azulado */
+    color: #FFFFFF; /* Color de texto blanco */
+    font-family: "Courier New", monospace; /* Aplicamos la fuente */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.edit-button:hover, .save-button:hover {
+    background-color: #455A64; /* Cambiamos el color de fondo al pasar el ratón */
+}

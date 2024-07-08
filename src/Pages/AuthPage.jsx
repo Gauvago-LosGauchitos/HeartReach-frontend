@@ -1,7 +1,7 @@
 import './AuthPage.css'
 
 export const AuthPage = () => {
-  return (
+  return (  
     <div>
     </div>
   )

@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import { getToken } from "../utils/auth.js"
 const apiClient = axios.create({
     baseURL: 'http://localhost:2690',
     timeout: 30000
@@ -128,4 +128,23 @@ export const getContacts = async () => {
     }
 };
 
+
+
+export const getUser = async () => {
+    try {
+        const tokenUser = getToken()
+        const response = await apiClient.get('/user/getUser', {
+            headers: {
+                Authorization: tokenUser
+            }
+        })
+        return response
+        
+    } catch (err) {
+        return {
+            error: true,
+            errorDetails: err
+        }
+    }
+}
 
