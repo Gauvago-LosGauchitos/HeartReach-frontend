@@ -23,11 +23,23 @@ export const InfoOrganization = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 600)
+        return () => clearTimeout(timer)
+    }, [])
+
 
 
     return (
+        <div>
+        {loading ? (
+            <Spinner />
+        ) : (
     
                 <div className='body-infoxd'>
+                    <NavBar/>
                     <header className='headers'>
                         <img className='bg' src={ImgDefault} alt="" />
                         <img className='esp' alt="" />
@@ -72,6 +84,8 @@ export const InfoOrganization = () => {
                         </div>
                     </section>
                 </div>
+                )}
+        </div>
          
     )
 };

@@ -1,11 +1,14 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './OrganizationView.css';
 import ImgDefault from '../../assets/img/logo.png';
 import imhHeroe from '../../assets/img/imhHeroe.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useOrganization } from '../../shared/hooks/useOrganization.jsx';
+import { NavBar } from '../NavBar/NavBar';
+import { Spinner } from '../../assets/spinner/spinner';
 
 export const OrganizationView = () => {
+  const [loading, setLoading] = useState(true)
   const { org, isLoading } = useOrganization();
   const navigate = useNavigate();
 
@@ -23,8 +26,21 @@ export const OrganizationView = () => {
 
   console.log('Organizations array:', organizations);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setLoading(false)
+    }, 600)
+    return () => clearTimeout(timer)
+}, [])
+
   return (
+
+    <div>
+        {loading ? (
+            <Spinner />
+        ) : (
     <div className='body'>
+      <NavBar/>
       <div className="header_image_container">
         <div>
           <h1>Hola chitu</h1>
@@ -56,5 +72,7 @@ export const OrganizationView = () => {
         </section>
       </div>
     </div>
+    )}
+        </div>
   );
 }
