@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Router } from 'react-router-dom';
 import { Login } from './src/components/Login.jsx';
 import { AuthPage } from './src/Pages/AuthPage.jsx';
 import { HomePage } from './src/components/HomePage/HomePage.jsx';
@@ -12,7 +12,6 @@ import { UserEditProfile } from './src/components/UserEditProfile/UserEditProfil
 
 export const AppRoutes = () => {
   return (
-    <Router>
         <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/home' element={<HomePage/>}/>
@@ -22,7 +21,6 @@ export const AppRoutes = () => {
         <Route path='/userProfile' element={<UserProfile/>}/>
         <Route path='/userEditProfile' element={<UserEditProfile/>}/>
         </Routes>
-    </Router>
   )
 }
 

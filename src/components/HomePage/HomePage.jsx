@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
-import { useNavigate } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
 import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
-import { color } from 'framer-motion';
 import { Spinner } from '../../assets/spinner/spinner';
 
 export const HomePage = () => {
-
-    const navigate = useNavigate()
 const [loading, setLoading] = useState(true)
     useEffect(() => {
         const scrollRevealOption = {
@@ -37,10 +33,6 @@ const [loading, setLoading] = useState(true)
             delay: 1000,
         });
     }, []);
-
-    const handleAbout = () =>{
-        navigate('/AboutUs')
-    }
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false)
@@ -54,7 +46,7 @@ const [loading, setLoading] = useState(true)
             <Spinner />
         ) : (
         <div className='bodyHomePage'>
-            <NavBar />
+            <NavBar/>
             <header className="header__container">
                 <div className="header__image">
                     <img src={personaTexto} alt="header" />
@@ -66,17 +58,17 @@ const [loading, setLoading] = useState(true)
                         <span className="h1__span-2">para todos</span>
                     </h1>
                     <p>
-                        Buscamos que las personas interesadas en contribuir con causas sociales puedan tener un acceso
-                        más rápido y eficaz a estos voluntariados; así como ayudar a las organizaciones que promueven
+                        Buscamos que las personas interesadas en contribuir con causas sociales puedan tener un acceso 
+                        más rápido y eficaz a estos voluntariados; así como ayudar a las organizaciones que promueven 
                         estos mismos a darse conocer y conseguir la ayuda necesaria.
                     </p>
                     <div className="header__btn">
-                        <button onClick={handleAbout} className="btn">Conocenos!</button>
+                        <button className="btn">Learn More</button>
                     </div>
-                   
+                    
                 </div>
             </header>
-
+            
 
             <section className="volunteers">
                 <h2>Voluntariados</h2>
@@ -93,12 +85,12 @@ const [loading, setLoading] = useState(true)
                         <img src="https://via.placeholder.com/150" alt="Entrega de víveres" />
                         <p>Entrega de víveres</p>
                     </div>
-                    <div className="option">    
+                    <div className="option">
                         <img src="https://via.placeholder.com/150" alt="Visita a adultos mayores" />
                         <p>Visita a adultos mayores</p>
                     </div>
                 </div>
-            </section>
+            </section>  
 
             <section className="map-section">
                 <h2>Encuentra Voluntariados Cerca de Ti</h2>
@@ -124,7 +116,7 @@ const [loading, setLoading] = useState(true)
             </section>
 
             <section className="impact-stats">
-
+                
                 <h2>Nuestro Impacto</h2>
                 <div className="stats">
                     <div className="stat">
@@ -158,9 +150,7 @@ const [loading, setLoading] = useState(true)
                 </form>
             </section>
 
-            <Footer />
-        </div>
-        )}
+            <Footer/>
         </div>
         )}
         </div>
