@@ -37,8 +37,10 @@ export const getOrgs = async() =>{
 }
 
 export const getOrgId = async(orgId) =>{
+    console.log(orgId)
+    
     try {
-        const response = await apiClient.post('/org/searchById' ,{id:orgId})
+        const response = await apiClient.post('/org/search' ,{id:orgId})
         return response.data
     } catch (error) {
         error : true,

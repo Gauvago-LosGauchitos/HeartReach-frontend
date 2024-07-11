@@ -25,6 +25,7 @@ export const useOrganization = () => {
   
   const getOrgsId = async (orgId)=>{
     
+    
     try {
       const response = await getOrgId(orgId)
       if (response.error) {
@@ -51,4 +52,3 @@ export const useOrganization = () => {
     getOrgsId
   }
 }
-
