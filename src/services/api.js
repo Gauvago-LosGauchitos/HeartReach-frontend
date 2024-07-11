@@ -37,8 +37,10 @@ export const getOrgs = async() =>{
 }
 
 export const getOrgId = async(orgId) =>{
+    console.log(orgId)
+    
     try {
-        const response = await apiClient.post('/org/searchById' ,{id:orgId})
+        const response = await apiClient.post('/org/search' ,{id:orgId})
         return response.data
     } catch (error) {
         error : true,
@@ -147,4 +149,19 @@ export const getUser = async () => {
         }
     }
 }
+
+export const updateUser = async (userData) => {
+    try {
+        const response = await apiClient.put('/user/updateProfile', userData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
 

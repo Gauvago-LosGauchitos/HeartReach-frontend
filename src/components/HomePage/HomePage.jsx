@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
 import { useNavigate } from 'react-router-dom';
@@ -7,11 +7,12 @@ import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
 import { color } from 'framer-motion';
+import { Spinner } from '../../assets/spinner/spinner';
 
 export const HomePage = () => {
 
     const navigate = useNavigate()
-
+const [loading, setLoading] = useState(true)
     useEffect(() => {
         const scrollRevealOption = {
             distance: "50px",
@@ -40,8 +41,18 @@ export const HomePage = () => {
     const handleAbout = () =>{
         navigate('/AboutUs')
     }
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 600)
+        return () => clearTimeout(timer)
+    }, [])
 
     return (
+        <div>
+        {loading ? (
+            <Spinner />
+        ) : (
         <div className='bodyHomePage'>
             <NavBar />
             <header className="header__container">
@@ -148,6 +159,10 @@ export const HomePage = () => {
             </section>
 
             <Footer />
+        </div>
+        )}
+        </div>
+        )}
         </div>
     );
 };

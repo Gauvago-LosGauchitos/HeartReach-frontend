@@ -26,7 +26,7 @@ export const NavBar = () => {
     };
 
     const handleProfileClick = () => {
-        navigate('/userProfile');
+        navigate('/userEditProfile');
     };
 
     return (

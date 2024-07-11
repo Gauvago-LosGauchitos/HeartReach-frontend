@@ -44,6 +44,12 @@ export const UserProfile = () => {
                         <p>Cargando usuario...</p>
                     ) : (
                         <div className="user-profile-card">
+                            <div className="assigned-volunteer">
+                                <p><strong>HABILIDADES:</strong></p>
+                                <div className="habilities-container">
+                                    <p>{user.habilities}</p>
+                                </div>
+                            </div>
                             <div className="user-profile-details">
                                 <div className="profile-circle"></div>
                                 <div className="user-profile-image">
@@ -54,16 +60,10 @@ export const UserProfile = () => {
                                 <div className='user-profile-data'>
                                     <div className='data-volunteer'>
                                         <h2>{user.name} {user.surname}</h2>
-                                        <p><strong>correo electrónico:</strong> {user.email}</p>
-                                        <p><strong>número de teléfono:</strong> {user.phone}</p>
+                                        <p><strong>Correo electrónico:</strong> {user.email}</p>
+                                        <p><strong>Número de teléfono:</strong> {user.phone}</p>
                                         <p><strong>DPI:</strong> {user.dpi}</p>
                                         <p><strong>Username:</strong> {user.username}</p>
-                                    </div>
-                                    <div className="assigned-volunteer">
-                                        <p><strong>HABILIDADES:</strong></p>
-                                        <div className="habilities-container">
-                                            <p>{user.habilities}</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
