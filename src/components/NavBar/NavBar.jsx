@@ -11,7 +11,6 @@ export const NavBar = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const navigate = useNavigate();
 
-    const navigate = useNavigate()
 
     const handleHome = () =>{
         navigate('/home')
