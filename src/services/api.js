@@ -64,3 +64,18 @@ export const getUser = async () => {
     }
 }
 
+export const updateUser = async (userData) => {
+    try {
+        const response = await apiClient.put('/user/updateProfile', userData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
+
