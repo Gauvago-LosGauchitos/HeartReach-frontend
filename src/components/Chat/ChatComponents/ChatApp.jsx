@@ -4,7 +4,7 @@ import { NavBar } from '../../NavBar/NavBar.jsx';
 import { Footer } from '../../Footer/Footer.jsx';
 import { useSearch } from '../../../shared/hooks/useSearch.jsx';
 import { useChatData } from '../../../shared/hooks/useMessages.jsx';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import './ChatApp.css';
 import { sendPrivateMessage, sendUserMessage, getPrivateMessages, getUserMessages } from '../../../services/api.js';
 
@@ -23,6 +23,8 @@ export const ChatApp = () => {
 
     const { searchUsers2, searchOrganizations2 } = useSearch();
     const { messages, setMessages, contacts, setContacts } = useChatData(activeChat);
+
+    console.log(messages)
 
     useEffect(() => {
         scrollToBottom();
@@ -65,20 +67,30 @@ export const ChatApp = () => {
 
         setActiveChat({ ...contact, senderId, receiverId });
         setShowContacts(true);
+        setType(contact.type);
 
         try {
             let oldMessages = [];
             if (contact.type === 'organization') {
-                oldMessages = await getPrivateMessages(senderId, receiverId); // API call to get messages between user and organization
+                oldMessages = await getPrivateMessages(senderId, receiverId);
             } else {
-                oldMessages = await getUserMessages(senderId, receiverId); // API call to get messages between two users
+                oldMessages = await getUserMessages(senderId, receiverId);
             }
-            const formattedMessages = oldMessages.map(msg => ({
-                id: msg._id,
-                sender: msg.username || 'Unknown', // Adjust according to your data structure
-                content: msg.message,
-                time: new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            }));
+
+            console.log('Old Messages:', oldMessages);
+
+            // Flatten and format messages for display
+            const formattedMessages = oldMessages.flatMap(msgObj =>
+                msgObj.messages.map(msg => ({
+                    id: msg._id,
+                    sender: msg.sender.username || 'Unknown',
+                    content: msg.message,
+                    time: new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                }))
+            );
+
+            console.log('Formatted Messages:', formattedMessages);
+
             setMessages(formattedMessages);
         } catch (error) {
             console.error('Error fetching old messages:', error);
@@ -101,7 +113,7 @@ export const ChatApp = () => {
                 const combinedResults = [...usersResults, ...orgsResults];
                 setSearchResults(combinedResults);
             } catch (error) {
-                console.error('Error al buscar:', error);
+                console.error('Error searching:', error);
                 setSearchResults([]);
             }
         } else {
@@ -144,9 +156,9 @@ export const ChatApp = () => {
                     });
                 }
 
-                socket.emit('sendMessage', { chatId: activeChat.id, message: newMessage });
+                socket.emit('sendMessage', { chatId: activeChat._id, message: newMessage });
             } catch (error) {
-                console.error('Error al enviar el mensaje:', error);
+                console.error('Error sending message:', error);
             }
         }
     };
@@ -178,7 +190,7 @@ export const ChatApp = () => {
                             {searchResults.length > 0 && (
                                 <div className="search-results">
                                     {searchResults.map(result => (
-                                        <div key={result.id} className="search-result" onClick={() => handleSearchResultClick(result)}>
+                                        <div key={result._id} className="search-result" onClick={() => handleSearchResultClick(result)}>
                                             <p>{result.username || result.name}</p>
                                         </div>
                                     ))}
@@ -190,8 +202,8 @@ export const ChatApp = () => {
                         <div className="default-contacts">
                             {contacts.length > 0 ? (
                                 contacts.map((contact) => (
-                                    <div className="contact" key={contact.id} onClick={() => handleChatClick(contact)}>
-                                        <img src="https://placehold.co/24x24" alt="user-icon" className="avatar" />
+                                    <div className="contact" key={contact._id} onClick={() => handleChatClick(contact)}>
+                                        <img src={contact.imageProfile || "https://placehold.co/24x24"} alt="user-icon" className="avatar" />
                                         <div className="contact-info">
                                             <p className="contact-name">{contact.username || contact.name}</p>
                                         </div>
@@ -210,15 +222,21 @@ export const ChatApp = () => {
                         </button>
                     </div>
                     <div className="chat-messages">
-                        {messages.map((message) => (
-                            <div className={`message ${message.sender === 'You' ? 'message-self' : ''}`} key={message.id}>
-                                <img src="https://placehold.co/24x24" alt="user-icon" className="avatar" />
-                                <div>
-                                    <p className="message-sender">{message.sender} <span className="message-time">{message.time}</span></p>
-                                    <p className="message-content">{message.content}</p>
+                        {messages.length > 0 ? (
+                            messages.map((message) => (
+                                <div className={`message ${message.sender._id === 'You' ? 'message-self' : ''}`} key={message.id}>
+                                    <img src={activeChat.imageProfile || "https://placehold.co/24x24"} alt="user-icon" className="avatar" />
+                                    <div>
+                                        <p className="message-sender">
+                                            {message.sender.username} <span className="message-time">00.00</span>
+                                        </p>
+                                        <p className="message-content">{message?.messages?.message}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))
+                        ) : (
+                            <div>No messages</div>
+                        )}
                         <div ref={messagesEndRef}></div>
                     </div>
                     <div className="chat-input">

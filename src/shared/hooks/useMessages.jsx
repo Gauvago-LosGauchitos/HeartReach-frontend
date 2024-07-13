@@ -31,6 +31,7 @@ export const useChatData = (activeChat) => {
                     } else {
                         response = await getUserMessages({ sender: activeChat.senderId, receiver: activeChat.receiverId });
                     }
+                    console.log(response)
                     setMessages(response);
                 } catch (error) {
                     console.error('Error al cargar mensajes antiguos:', error);

@@ -82,9 +82,10 @@ export const getPrivateMessages = async (userId, organizationId) => {
 };
 
 // Obtener mensajes privados antiguos entre dos usuarios
-export const getUserMessages = async (senderId, receiverId) => {
+export const getUserMessages = async (sender, receiver) => {
     try {
-        const response = await apiClient.post('/user/userMessages', { sender: senderId, receiver: receiverId });
+        const response = await apiClient.post('/user/userMessages', { sender}, {receiver });
+        console.log(response)
         return response.data;
     } catch (error) {
         console.error("Error getting user messages:", error);
