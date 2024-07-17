@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register {
+    display: none; /* Ocultar el contenido por defecto */
+}
+
+.container:not(.loading) .register {
+    display: flex; /* Mostrar el contenido cuando la carga finalice */
+}
+
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.containerRegister {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 2rem;
+  color: #333333;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.form {
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.input-box {
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
+.input-box label {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  font-size: 14px;
+  color: #333333;
+  background: #ffffff;
+  padding: 0 5px;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #333333;
+  font-size: 16px;
+}
+
+.input-icon input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #cccccc;
+  outline: 0;
+  font-size: 16px;
+  color: #333333;
+  padding: 10px 10px 10px 30px;
+  background: transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-icon input::placeholder {
+  color: #aaa;
+}
+
+.input-icon input:focus {
+  border-bottom-color: #4caf50;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.form button {
+  width: 100%;
+  background: #000000;
+  border: none;
+  color: white;
+  padding: 15px 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.form button:hover {
+  background: #181818;
+  transform: translateY(-2px);
+}
+
+.form button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
