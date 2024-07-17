@@ -9,6 +9,7 @@ import { UserEditProfile } from './src/components/UserEditProfile/UserEditProfil
 import {ChatApp} from './src/components/Chat/ChatComponents/ChatApp.jsx';
 import { VolunteerRegistrationForm } from './src/volunteer/VolunteerRegister.jsx';
 
+import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
 
 
 
@@ -24,7 +25,6 @@ export const AppRoutes = () => {
         <Route path='/userProfile' element={<UserProfile/>}/>
         <Route path='/userEditProfile' element={<UserEditProfile/>}/>
         <Route path='/Chat' element={<ChatApp/>}/>
-        <Route path='/volunteerRegistration' element={<VolunteerRegistrationForm/>}/>
         </Routes>
   )
 }

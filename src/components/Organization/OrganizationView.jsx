@@ -28,51 +28,42 @@ export const OrganizationView = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-        setLoading(false)
+      setLoading(false)
     }, 600)
     return () => clearTimeout(timer)
-}, [])
+  }, [])
 
   return (
 
     <div>
-        {loading ? (
-            <Spinner />
-        ) : (
-    <div className='body'>
-      <NavBar/>
-      <div className="header_image_container">
-        <div>
-          <h1>Hola chitu</h1>
-          <p>un pollo pollon</p>
-        </div>
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className='body'>
+          <NavBar />
+              <h2 className="section__header">Escoje tu proximo voluntariado</h2>
+              <div className='object'>
+                {!isLoading && organizations.map((orgItem, index) => (
+                  <div key={index}className='target' onClick={() => hanadlerInfoOrg(orgItem._id)}>
+                    <div className='container-organization'>
+                      {/* Otros elementos */}
+                      <div class="cardBox">
+                        <div class="card">
+                          <div class="h4">{orgItem?.name || "Nombre no disponible"}</div>
 
-      <div>
-        <section>
-          <h2 className="section__header">Escoje tu proximo voluntariado</h2>
-          <div className='object'>
-            {!isLoading && organizations.map((orgItem, index) => (
-              <div key={index} style={{ border: '1px solid black' }} className='target' onClick={()=>hanadlerInfoOrg(orgItem._id)}>
-                <div>
-                  <img src={ImgDefault} alt="Organization Logo" className='img'/>
-                  <div>
-                    <h1>{orgItem?.name || "Nombre no disponible"}</h1> {/* Aquí mostramos el nombre de la organización */}
-                    {console.log("Org item:", orgItem)}
-                    <p>Dirección: {orgItem?.address || "Correo no disponible"}</p>
-                    <p>Telefono: {orgItem?.phone || "Telefono no disponible"}</p>
+                          <div class="content">
+                            <div class="h3">{orgItem?.name || "Nombre no disponible"}</div>
+                            <p>Dirección: {orgItem?.address || "Correo no disponible"}</p>
+                            <p>Teléfono: {orgItem?.phone || "Teléfono no disponible"}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  {/* Otros elementos */}
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
-      </div>
-    </div>
-    )}
         </div>
+      )}
+    </div>
   );
 }
