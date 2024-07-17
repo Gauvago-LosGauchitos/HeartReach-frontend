@@ -60,7 +60,7 @@ export const Login = () => {
 
   return (
     <div className='bodyL'>
-    <div className={`container ${containerClass}`}>
+    <div className={`containerLog ${containerClass}`}>
       <div className="signin-signup">
         <form className="sign-in-form" onSubmit={handleLogin}>
           <h2 className="title">Login</h2>
