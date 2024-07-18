@@ -36,27 +36,25 @@ export const VoluntersView = () => {
       ) : (
         <div className='body'>
           <NavBar />
-              <h2 className="section__header">Escoje tu proximo voluntariado</h2>
-              <div className='object'>
-                {!isLoading && volunteers.map((volItem, index) => (
-                  <div key={index}className='target' onClick={() => hanadlerInfoOrg(volItem._id)}>
-                    <div className='container-organization'>
-                      {/* Otros elementos */}
-                      <div class="cardBox">
-                        <div class="card">
-                          <div class="h4">{volItem?.title || "Nombre no disponible"}</div>
-
-                          <div class="content">
-                            <div class="h3">{volItem?.name || "Nombre no disponible"}</div>
-                            <p>Dirección: {volItem?.address || "Correo no disponible"}</p>
-                            <p>Teléfono: {volItem?.phone || "Teléfono no disponible"}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+          <h2 className="section__header">Escoje tu proximo voluntariado</h2>
+          <div className='object'>
+            {!isLoading && volunteers.map((volItem, index) => (
+              <div key={index} className='target' onClick={() => hanadlerInfoVolunteer(volItem._id)}>
+                <div className='container-organization'>
+                  {/* Otros elementos */}
+                  <div class="YoutubeVideo">
+                    <div class="Image"><img src={volItem?.imageVol} alt="Logo" className='logo-organization'/></div>
+                    <div class="Icon"> <img src={ImgDefault} alt="Organization Logo" className='img' /></div>
+                    <div class="Title"><center><p>{volItem?.title || "Titulo no disponible"}</p></center></div>
+                    <div class="Name"><p>{volItem?.description || "Descripcion no disponible"}</p></div>
+                    <div class="Tel"><p>Hora de inicio: {volItem?.timeStart || "Hora de inicio no disponible"}</p></div>
+                    <div class="Tel"><p>Hora de finalización: {volItem?.timeEnd || "Hora de finalización no disponible"}</p></div>
                   </div>
-                ))}
+                  
+                </div>
               </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

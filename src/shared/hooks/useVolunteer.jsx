@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
-import { getVolunteerTypes, registerVolunteer, listVolunteers } from "../../services/api"
+import { getVolunteerTypes, registerVolunteer, listVolunteers, getVolunteerById } from "../../services/api"
 
 export const useVolunteer = () => {
     const [typesVolunteer, setTypesVolunteer, listVolunteer] = useState()
     const [volunteers, setVolunteers] = useState([])
+    const [selectedVolu, setSelectedVolu] = useState([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -45,6 +46,22 @@ export const useVolunteer = () => {
             return response.data.data
             
         } catch (err) {
+            console.error("Error al obtener los voluntariados:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    //Obtener datos de un voluntairado
+    const getVolunteer = async (id) =>{
+        setLoading(true)
+        try {
+            const response = await getVolunteerById(id)
+            setSelectedVolu(response)
+            return response
+            
+        } catch (err) {
             console.error("Error al obtener el voluntariado:", err);
             setError(err.message);
         } finally {
@@ -63,7 +80,9 @@ export const useVolunteer = () => {
         loading,
         error,
         registerVolunteers,
-        volunteers
+        volunteers,
+        selectedVolu,
+        getVolunteer
 
     }
 }

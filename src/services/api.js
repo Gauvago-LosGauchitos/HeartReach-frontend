@@ -230,7 +230,6 @@ export const listVolunteers = async () => {
                 'Authorization': localStorage.getItem('authToken') // Obtener el token del localStorage
             }
         })
-        console.log(response)
         return response
 
     } catch (error) {
@@ -239,4 +238,22 @@ export const listVolunteers = async () => {
         throw error;
 
     }
+}
+
+//Obtener datos de un voluntariado
+export const getVolunteerById = async (id) => {
+    try {
+        const response = await apiClient.get('/volu/getVolunteering', {id}, {
+            headers: {
+                'Authorization': localStorage.getItem('authToken') // Obtener el token del localStorage
+            }
+        })
+        return response.data
+        
+    } catch (error) {
+        console.error('Error buscando el voluntariado', error)
+        toast.error(error.response.data.message)
+        throw error;
+    }
+
 }

@@ -34,12 +34,12 @@ export const InfoOrganization = () => {
 
     return (
         <div>
-        {loading ? (
-            <Spinner />
-        ) : (
-    
+            {loading ? (
+                <Spinner />
+            ) : (
+
                 <div className='body-infoxd'>
-                    <NavBar/>
+                    <NavBar />
                     <header className='headers'>
                         <img className='bg' src={ImgDefault} alt="" />
                         <img className='esp' alt="" />
@@ -84,8 +84,8 @@ export const InfoOrganization = () => {
                         </div>
                     </section>
                 </div>
-                )}
+            )}
         </div>
-         
+
     )
 };

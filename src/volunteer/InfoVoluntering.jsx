@@ -2,11 +2,41 @@ import { NavBar } from '../components/NavBar/NavBar.jsx';
 import { Footer } from '../components/Footer/Footer.jsx';
 import { MapVolu } from '../assets/MapVolu.jsx';
 import voluBack from '../assets/img/backVoluInfo.jpg'
+import { useVolunteer } from '../shared/hooks/useVolunteer.jsx';
+import { useParams,  } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Spinner } from '../assets/spinner/spinner.jsx';
 import './InfoVoluntering.css'
 
 export const InfoVoluntering = () => {
+    const { selectedVolu, getVolunteer } = useVolunteer();
+    const [loading, setLoading] = useState(true)
+    const { id } = useParams();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await getVolunteer(id);
+        };
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 600)
+        return () => clearTimeout(timer)
+    }, [])
+
+    console.log(selectedVolu)
+
+
     return (
-        <div className='infoVolBody'>
+        <div>
+            {loading ? (
+                <Spinner />
+            ):(
+                <div className='infoVolBody'>
+            
             <NavBar />
             <div className="flex flex-col lg:flex-row bg-background">
                 <div className=" info p-8 lg:w-1/3  flex-col justify-between">
@@ -35,6 +65,10 @@ export const InfoVoluntering = () => {
             </div>
 
             <Footer />
+        </div>
+            )
+        }
+        
         </div>
     )
 }
