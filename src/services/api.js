@@ -166,3 +166,44 @@ export const updateUser = async (userData) => {
     }
 };
 
+
+// Función para registrar una review de una organización
+export const registerOrganizationReview = async (reviewData) => {
+    try {
+        const response = await apiClient.post('/revew/newRevew', reviewData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error registering organization review:', error);
+        throw error;
+    }
+};
+// funcion para mostrar las revews de la organizacion(no funca)
+export const getAllReviews = async (orgaId) => {
+    try {
+        const response = await apiClient.post('/review/getOrganizationReviews',  orgaId , {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener las reviews:', error);
+        throw error; 
+    }
+};
+// Funcion para mostrar todas las revews(esta mal hecho pero bueh)
+export const getRevew = async() =>{
+    try {
+        const response = await apiClient.get('/revew/getAllReviews')
+        return response.data
+    } catch (error) {
+        error: true,
+        error
+    }
+}
