@@ -55,7 +55,7 @@ export const getOrgId = async(orgId) =>{
 //Buscar usuario por coincidencia
 export const searchUsers = async (query) => {
     try {
-        const response = await apiClient.get(`/user/search/users?query=${query}`);
+        const response = await apiClient.get(/user/search/users?query=${query});
         return response.data;
     } catch (error) {
         console.error("Error searching users:", error);
@@ -66,7 +66,7 @@ export const searchUsers = async (query) => {
 //Buscar organizacion por coincidencia
 export const searchOrganizations = async (query) => {
     try {
-        const response = await apiClient.get(`/org/search/organizations?query=${query}`);
+        const response = await apiClient.get(/org/search/organizations?query=${query});
         return response.data;
     } catch (error) {
         console.error("Error searching organizations:", error);
@@ -169,8 +169,95 @@ export const updateUser = async (userData) => {
     }
 };
 
+//Enviar solicitud 
+export const orgRequest = async (data) => {
+    console.log(data)
+    try {
+        const tokenUser = getToken(); 
+        const response = await apiClient.post('/org/request', data, {
+            headers: {
+                'Content-Type': 'application/json',
+               'Authorization': tokenUser
+            }
+        }); 
+        return response.data;
+    } catch (error) {
+        throw error.response.data;
+    }
+};
 
-// Función para registrar una review de una organización
+//Obtener tipos de voluntariado
+export const getVolunteerTypes = async () => {
+    try {
+        const response = await apiClient.get('/volu//getTypesOfVolunteering', {
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response
+        
+    } catch (error) {
+        console.error('Error getting types of volunteer:', error);
+        toast.error(error.response?.data?.message);
+        throw error;
+    }
+}
+
+//Registrar voluntariado
+export const registerVolunteer = async (data) => {
+    console.log(data)
+    try {
+        const response = await apiClient.post('/volu//registerV', data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response
+        
+    } catch (error) {
+        console.error('Error register volunteer:', error);
+        toast.error(error.response?.data?.message);
+        throw error;
+    }
+}
+
+//Listar voluntariados
+export const listVolunteers = async () => {
+    try {
+        const response = await apiClient.get('/volu//listarVolunteering', {
+            headers: {
+                'Authorization': localStorage.getItem('authToken') // Obtener el token del localStorage
+            }
+        })
+        return response
+
+    } catch (error) {
+        console.error('Error buscando los voluntariados', error)
+        toast.error(error.response.data.message)
+        throw error;
+
+    }
+}
+
+//Obtener datos de un voluntariado
+export const getVolunteerById = async (id) => {
+    try {
+        const response = await apiClient.get('/volu/getVolunteering', {id}, {
+            headers: {
+                'Authorization': localStorage.getItem('authToken') // Obtener el token del localStorage
+            }
+        })
+        return response.data
+        
+    } catch (error) {
+        console.error('Error buscando el voluntariado', error)
+        toast.error(error.response.data.message)
+        throw error;
+    }
+
+}
+
 export const registerOrganizationReview = async (reviewData) => {
     try {
         const response = await apiClient.post('/revew/newRevew', reviewData, {
