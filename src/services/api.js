@@ -1,5 +1,7 @@
 import axios from "axios"
 import { getToken } from "../utils/auth.js"
+import toast from "react-hot-toast";
+
 const apiClient = axios.create({
     baseURL: 'http://localhost:2690',
     timeout: 30000
@@ -132,7 +134,6 @@ export const getContacts = async () => {
 };
 
 
-
 export const getUser = async () => {
     try {
         const tokenUser = getToken()
@@ -182,3 +183,38 @@ export const orgRequest = async (data) => {
         throw error.response.data;
     }
 };
+
+//Obtener tipos de voluntariado
+export const getVolunteerTypes = async () => {
+    try {
+        const response = await apiClient.get('/volu//getTypesOfVolunteering', {
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response
+        
+    } catch (error) {
+        console.error('Error getting types of volunteer:', error);
+        toast.error(error.response?.data?.message);
+        throw error;
+    }
+}
+
+//Registrar voluntariado
+export const registerVolunteer = async (volunteerData) => {
+    console.log(volunteerData)
+    try {
+        const response = await apiClient.post('/volu//registerV', {volunteerData}, {
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response
+        
+    } catch (error) {
+        console.error('Error getting types of volunteer:', error);
+        toast.error(error.response?.data?.message);
+        throw error;
+    }
+}

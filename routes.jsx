@@ -6,7 +6,9 @@ import { OrganizationView } from './src/components/Organization/OrganizationView
 import { InfoOrganization } from './src/components/Organization/InfoOrganization.jsx';
 import { UserProfile } from './src/components/UserProfile/UserProfile.jsx'
 import { UserEditProfile } from './src/components/UserEditProfile/UserEditProfile.jsx'
-import { ChatApp } from './src/components/Chat/ChatComponents/ChatApp.jsx';
+import {ChatApp} from './src/components/Chat/ChatComponents/ChatApp.jsx';
+import { VolunteerRegistrationForm } from './src/volunteer/VolunteerRegister.jsx';
+
 import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
 
 
@@ -23,7 +25,6 @@ export const AppRoutes = () => {
         <Route path='/userProfile' element={<UserProfile/>}/>
         <Route path='/userEditProfile' element={<UserEditProfile/>}/>
         <Route path='/Chat' element={<ChatApp/>}/>
-        <Route path='/soliOrganization' element={<SoliOrganization/>}/>
         </Routes>
   )
 }
