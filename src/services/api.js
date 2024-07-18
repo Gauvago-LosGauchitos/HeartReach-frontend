@@ -168,11 +168,13 @@ export const updateUser = async (userData) => {
 
 //Enviar solicitud 
 export const orgRequest = async (data) => {
+    console.log(data)
     try {
         const tokenUser = getToken(); 
         const response = await apiClient.post('/org/request', data, {
             headers: {
-                Authorization: tokenUser
+                'Content-Type': 'application/json',
+               'Authorization': tokenUser
             }
         }); 
         return response.data;
