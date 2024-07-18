@@ -7,7 +7,7 @@ const useSoliOrganization = () => {
         description: '',
         address: '',
         phone: '',
-        file: null,
+        images: null,
     });
 
     const [errors, setErrors] = useState({});
@@ -15,11 +15,27 @@ const useSoliOrganization = () => {
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
     const handleChange = (e) => {
-        const { name, value, files } = e.target;
+        const { name, value, images } = e.target;
         setFormData({
             ...formData,
-            [name]: files ? files[0] : value,
+            [name]: images ? images[0] : value
         });
+    };
+
+    const handleImagesChange = (e) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setFormData({
+                ...formData,
+                images: reader.result
+            });
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     };
 
     const validate = () => {
@@ -46,7 +62,7 @@ const useSoliOrganization = () => {
                 description: formData.description,
                 address: formData.address,
                 phone: formData.phone,
-                images: formData.file,
+                images: formData.images,
             });
             console.log(response); 
             setSubmitSuccess(true);
@@ -65,6 +81,7 @@ const useSoliOrganization = () => {
         submitSuccess,
         handleChange,
         handleSubmit,
+        handleImagesChange
     };
 };
 

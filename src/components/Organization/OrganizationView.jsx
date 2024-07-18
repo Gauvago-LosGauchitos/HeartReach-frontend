@@ -41,27 +41,24 @@ export const OrganizationView = () => {
       ) : (
         <div className='body'>
           <NavBar />
-              <h2 className="section__header">Escoje tu proximo voluntariado</h2>
-              <div className='object'>
-                {!isLoading && organizations.map((orgItem, index) => (
-                  <div key={index}className='target' onClick={() => hanadlerInfoOrg(orgItem._id)}>
-                    <div className='container-organization'>
-                      {/* Otros elementos */}
-                      <div class="cardBox">
-                        <div class="card">
-                          <div class="h4">{orgItem?.name || "Nombre no disponible"}</div>
-
-                          <div class="content">
-                            <div class="h3">{orgItem?.name || "Nombre no disponible"}</div>
-                            <p>Dirección: {orgItem?.address || "Correo no disponible"}</p>
-                            <p>Teléfono: {orgItem?.phone || "Teléfono no disponible"}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+          <h2 className="section__header">Escoje tu proximo voluntariado</h2>
+          <div className='object'>
+            {!isLoading && organizations.map((orgItem, index) => (
+              <div key={index} className='target' onClick={() => hanadlerInfoOrg(orgItem._id)}>
+                <div className='container-organization'>
+                  {/* Otros elementos */}
+                  <div class="YoutubeVideo">
+                    <div class="Image"><img src={orgItem?.images} alt="Logo" className='logo-organization'/></div>
+                    <div class="Icon"> <img src={ImgDefault} alt="Organization Logo" className='img' /></div>
+                    <div class="Title"><center><p>{orgItem?.name || "Nombre no disponible"}</p></center></div>
+                    <div class="Name"><p>{orgItem?.address || "Correo no disponible"}</p></div>
+                    <div class="Tel"><p>Tel: {orgItem?.phone || "Telefono no disponible"}</p></div>
                   </div>
-                ))}
+                  
+                </div>
               </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

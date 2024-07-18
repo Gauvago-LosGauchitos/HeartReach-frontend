@@ -54,6 +54,28 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
+.botonHome {
+    background-color: #000000; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 20px;
+    cursor: pointer; 
+    transition-duration: 0.4s;
+    border-radius: 12px;
+}
+
+.botonHome:hover {
+    background-color: white; 
+    color: #000000; 
+    border: 2px solid #000000; 
+}
+
+
 
 
 @keyframes fadeIn {
