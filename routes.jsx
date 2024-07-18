@@ -8,6 +8,8 @@ import { UserProfile } from './src/components/UserProfile/UserProfile.jsx'
 import { UserEditProfile } from './src/components/UserEditProfile/UserEditProfile.jsx'
 import {ChatApp} from './src/components/Chat/ChatComponents/ChatApp.jsx';
 import { VolunteerRegistrationForm } from './src/volunteer/VolunteerRegister.jsx';
+import { InfoVoluntering } from './src/volunteer/InfoVoluntering.jsx';
+import { VoluntersView } from './src/volunteer/VolunteersView.jsx';
 
 import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
 
@@ -25,6 +27,10 @@ export const AppRoutes = () => {
         <Route path='/userProfile' element={<UserProfile/>}/>
         <Route path='/userEditProfile' element={<UserEditProfile/>}/>
         <Route path='/Chat' element={<ChatApp/>}/>
+        <Route path='/SoliOrganization' element={<SoliOrganization/>}/>
+        <Route path='/VolunteerRegister' element={<VolunteerRegistrationForm/>}/>
+        <Route path='/infoVoluntering/:id' element={<InfoVoluntering/>}/>
+        <Route path='/VoluntersView' element={<VoluntersView/>}/>
         </Routes>
   )
 }

@@ -11,6 +11,7 @@ export const Login = () => {
   const { login, register } = useAuth();
 
   const handleSignUpClick = () => {
+    console.log('alo')
     setContainerClass('sign-up-mode');
   };
 
@@ -88,7 +89,7 @@ export const Login = () => {
           </div>
           <p className="account-text">
             No tienes una cuenta?{' '}
-            <a href="#" onClick={handleSignUpClick} id="sign-up-btn2">
+            <a onClick={handleSignUpClick} id="sign-up-btn2">
               Registrate
             </a>
           </p>

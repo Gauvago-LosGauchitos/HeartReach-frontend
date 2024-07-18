@@ -21,7 +21,9 @@ export const registerRequest = async(user) => {
 
 export const loginRequest = async(userLogin) =>{
     try {
-        return await apiClient.post('/user/login', userLogin)
+        const response = await apiClient.post('/user/login', userLogin)
+        console.log(response)
+        return response
     } catch (error) {
         error: true,
         error
@@ -200,19 +202,39 @@ export const getVolunteerTypes = async () => {
 }
 
 //Registrar voluntariado
-export const registerVolunteer = async (volunteerData) => {
-    console.log(volunteerData)
+export const registerVolunteer = async (data) => {
+    console.log(data)
     try {
-        const response = await apiClient.post('/volu//registerV', {volunteerData}, {
+        const response = await apiClient.post('/volu//registerV', data, {
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('authToken')
             }
         })
         return response
         
     } catch (error) {
-        console.error('Error getting types of volunteer:', error);
+        console.error('Error register volunteer:', error);
         toast.error(error.response?.data?.message);
         throw error;
+    }
+}
+
+//Listar voluntariados
+export const listVolunteers = async () => {
+    try {
+        const response = await apiClient.get('/volu//listarVolunteering', {
+            headers: {
+                'Authorization': localStorage.getItem('authToken') // Obtener el token del localStorage
+            }
+        })
+        console.log(response)
+        return response
+
+    } catch (error) {
+        console.error('Error buscando los voluntariados', error)
+        toast.error(error.response.data.message)
+        throw error;
+
     }
 }

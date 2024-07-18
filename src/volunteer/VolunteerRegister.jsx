@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LocationMarker, LocationPicker } from '../assets/LocationPicker.jsx';
 import { useVolunteer } from '../shared/hooks/useVolunteer.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
@@ -16,10 +16,25 @@ export const VolunteerRegistrationForm = () => {
         timeEnd: '',
         quota: '',
         customType: '',
+        organization: '665ab7433e4aaf0a6502238f',
         imageVol: null
     });
     const [showCustomType, setShowCustomType] = useState(false);
     const { volunteerTypes, typesVolunteer, registerVolunteers, loading } = useVolunteer()
+    const [tiposVolu, setTiposVolu] = useState([])
+
+
+
+    const TypesVolue = () => {
+        setTiposVolu(typesVolunteer)
+
+    }
+    useEffect(() => {
+        TypesVolue()
+    },
+        [TypesVolue]
+    )
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -47,10 +62,19 @@ export const VolunteerRegistrationForm = () => {
     };
 
     const handleImageChange = (e) => {
-        setFormData(prevState => ({
-            ...prevState,
-            imageVol: e.target.files[0]
-        }));
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setFormData({
+                ...formData,
+                imageVol: reader.result
+            });
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleSubmit = (e) => {
@@ -106,53 +130,48 @@ export const VolunteerRegistrationForm = () => {
                     </div>
 
                     <div className="flex">
-                    <label>
-                        {!loading && Array.isArray(typesVolunteer) && typesVolunteer.map(types =>(
-                            <div key={types._id}>
-                                {types.name}
-                            </div>
-                        ))}
-                        <select
-                            className="inputRV"
-                            name="typeOfVolunteering"
-                            required
-                            value={formData.typeOfVolunteering}
-                            onChange={handleTypeChange}
-                        >
-                            <option value="">Seleccione un tipo de voluntariado</option>
-                            <option value="Educación">a</option>
-                            <option value="Salud">Salud</option>
-                            <option value="Medio Ambiente">Medio Ambiente</option>
-                            <option value="Asistencia Social">Asistencia Social</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </label>
-                    {showCustomType && (
                         <label>
-                            <input
+
+                            <select
                                 className="inputRV"
-                                type="text"
-                                name="customType"
-                                placeholder="Especifique otro tipo"
-                                value={formData.customType}
-                                onChange={handleChange}
-                            />
+                                name="typeOfVolunteering"
+                                required
+                                value={formData.typeOfVolunteering}
+                                onChange={handleTypeChange}
+                            >
+                                {!loading && Array.isArray(tiposVolu) && tiposVolu.map(types => (
+                                    <option key={types._id} value={types.name}>{types.name}</option>
+
+                                ))}
+                                <option value="Otro">Otro</option>
+                            </select>
                         </label>
-                    )}
+                        {showCustomType && (
+                            <label>
+                                <input
+                                    className="inputRV"
+                                    type="text"
+                                    name="customType"
+                                    placeholder="Especifique otro tipo"
+                                    value={formData.customType}
+                                    onChange={handleChange}
+                                />
+                            </label>
+                        )}
                     </div>
 
                     <div className='flex'>
-                    <label>
-                        <textarea
-                            className="inputRV"
-                            name="description"
-                            placeholder=""
-                            required
-                            value={formData.description}
-                            onChange={handleChange}
-                        />
-                        <span>Descripción</span>
-                    </label>
+                        <label>
+                            <textarea
+                                className="inputRV"
+                                name="description"
+                                placeholder=""
+                                required
+                                value={formData.description}
+                                onChange={handleChange}
+                            />
+                            <span>Descripción</span>
+                        </label>
 
                     </div>
 
@@ -181,7 +200,7 @@ export const VolunteerRegistrationForm = () => {
                             <span>Hora de Fin</span>
                         </label>
 
-                        
+
                     </div>
 
                     <span class="drop-title">Sube una imagen</span>
@@ -195,9 +214,9 @@ export const VolunteerRegistrationForm = () => {
                     </label>
 
                     <button className="submit" type="submit">Registrar</button>
-                    
+
                 </form>
-                
+
             </div>
             <Footer />
         </div>
