@@ -24,8 +24,17 @@ export const useAuth = () => {
                 return false;
             } else {
                 toast.success('¡Has iniciado sesión!');
+                const userData = {
+                  id: response.data.loggedUser.uid,
+                  name: response.data.loggedUser.name,
+                  username: response.data.loggedUser.username,
+                  role: response.data.loggedUser.role
+                  
+                }
                 // Guardar el token en localStorage
                 localStorage.setItem('authToken', response.data.token);
+                localStorage.setItem('userLogued', JSON.stringify(userData));
+                
 
                 return true;
             }

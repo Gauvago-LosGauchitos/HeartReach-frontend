@@ -1,0 +1,143 @@
+:root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(240, 10%, 3.9%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(240, 10%, 3.9%);
+    --primary: hsl(240, 5.9%, 10%);
+    --primary-foreground: hsl(0, 0%, 98%);
+    --secondary: hsl(240, 4.8%, 95.9%);
+    --secondary-foreground: hsl(240, 5.9%, 10%);
+}
+
+.flex {
+    display: flex;
+    background-image: linear-gradient(
+      rgba(44, 56, 85, 0.188),
+      rgba(100, 125, 187, 0.1)
+    ),
+    url('../assets/img/backVoluInfo.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.lg\\:flex-row {
+    flex-direction: row;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.lg\\:w-1\\\3 {
+    width: 33.3333%;
+}
+
+.bg-background {
+    background-color: var(--background);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
+
+.bg-card {
+    background-color: var(--card);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-foreground {
+    color: var(--foreground);
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.h-4 {
+    height: 1rem;
+    width: 120%;
+}
+
+.h-2 {
+    height: 0.5rem;
+}
+
+.h-1 {
+    height: 0.25rem;
+}
+
+.w-2 {
+    width: 0.5rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 200%;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.mr-2 {
+    margin-right: 0.5rem;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.lg\\:items-center {
+    align-items: center;
+}

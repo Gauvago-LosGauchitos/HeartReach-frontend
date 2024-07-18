@@ -1,5 +1,7 @@
 import axios from "axios"
 import { getToken } from "../utils/auth.js"
+import toast from "react-hot-toast";
+
 const apiClient = axios.create({
     baseURL: 'http://localhost:2690',
     timeout: 30000
@@ -19,7 +21,9 @@ export const registerRequest = async(user) => {
 
 export const loginRequest = async(userLogin) =>{
     try {
-        return await apiClient.post('/user/login', userLogin)
+        const response = await apiClient.post('/user/login', userLogin)
+        console.log(response)
+        return response
     } catch (error) {
         error: true,
         error
@@ -130,7 +134,6 @@ export const getContacts = async () => {
         throw error;
     }
 };
-
 
 
 export const getUser = async () => {

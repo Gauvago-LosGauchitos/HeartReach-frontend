@@ -1,5 +1,3 @@
-// hooks/useSearch.js
-
 import { useState } from 'react';
 import { searchUsers, searchOrganizations } from '../../services/api.js'
 
