@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const apiClient = axios.create({
     baseURL: 'http://localhost:2690',
-    timeout: 30000
+    timeout: 90000
 })
 
 export const getUsers = async () => {
@@ -304,12 +304,14 @@ export const reverseGeocode = async (lat, lng) => {
 export const assignVolunteer = async (volunteeringId) => {
     console.log(volunteeringId)
     try {
-        const response = apiClient.put('/volu/assignVolunteering', {volunteering: volunteeringId}, {
+        const response = await apiClient.put('/volu/assignVolunteering', {volunteering: volunteeringId}, {
             headers: {
                 'Authorization': localStorage.getItem('authToken')
             }
         })
-        return response
+        console.log(response)  
+        toast.success(response.data.message);
+        return response.data 
         
     } catch (error) {
         console.error('Error asignandose al voluntariado', error);
@@ -417,5 +419,41 @@ export const editOrganization = async (orgData) => {
     } catch (error) {
         error: true,
         error
+    }
+}
+
+//Salirse de un voluntariado
+export const leaveVolunteer = async (volunteering) => {
+    console.log(volunteering)
+    try {
+        const response = await apiClient.put('/volu/backOut', {volunteering},
+            {
+                headers: {
+                    'Authorization': localStorage.getItem('authToken')
+                    }})
+                    console.log(response)  
+                    toast.success(response.data.message);
+                    return response.data 
+        
+    } catch (error) {
+        console.error('Error asignandose al voluntariado', error);
+        throw error;
+    }
+}
+
+export const isOn = async(volunteering)=>{
+    console.log(volunteering)
+    try {
+        const response = await apiClient.post('/volu/verifyIfIsOn', {volunteering},
+            {
+                headers: {
+                    'Authorization': localStorage.getItem('authToken')
+                    }})
+                    console.log(response)  
+                    return response.data 
+                       
+    } catch (error) {
+        console.error('Error obteniendo voluntariado', error);
+        throw error;
     }
 }

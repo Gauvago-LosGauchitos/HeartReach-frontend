@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getVolunteerTypes, registerVolunteer, listVolunteers, getVolunteerById, assignVolunteer } from "../../services/api"
+import { getVolunteerTypes, registerVolunteer, listVolunteers, getVolunteerById, assignVolunteer, leaveVolunteer, isOn } from "../../services/api"
 import toast from "react-hot-toast";
 
 
@@ -9,6 +9,7 @@ export const useVolunteer = () => {
     const [selectedVolu, setSelectedVolu] = useState([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [voluAs, setVoluAs] = useState(false)
 
     const volunteerTypes = async () => {
         setLoading(true)
@@ -90,6 +91,39 @@ export const useVolunteer = () => {
         }
     }
 
+    //Dejar un voluntariado
+    const leaveAVolunteer = async (id) =>{
+        setLoading(true)
+        try {
+            const response = await leaveVolunteer(id)
+            return response
+            
+        } catch (err) {
+            toast.error(err.response.data.message);
+            console.error("Error al asignarse a el voluntariado:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const isOnA = async (id)  =>{
+        try {
+            const response = await isOn(id)
+            setVoluAs(response)
+            return response
+            
+        }catch (err) {
+            toast.error(err.response.data.message);
+            console.error("Error al asignarse a el voluntariado:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }   
+        }
+
+    
+
     useEffect (() => {
         volunteerTypes()
         getVolunteers()
@@ -104,7 +138,10 @@ export const useVolunteer = () => {
         volunteers,
         selectedVolu,
         getVolunteer,
-        assignToAVolunteer
+        assignToAVolunteer,
+        leaveAVolunteer,
+        isOnA,
+        voluAs
 
     }
 }

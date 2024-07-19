@@ -10,12 +10,13 @@ import cargando from '../assets/img/cargando.gif'
 import './InfoVoluntering.css';
 
 export const InfoVoluntering = () => {
-    const { selectedVolu, getVolunteer, assignToAVolunteer } = useVolunteer();
+    const { selectedVolu, getVolunteer, assignToAVolunteer, isOnA, voluAs, leaveAVolunteer } = useVolunteer();
     const [loading, setLoading] = useState(true);
     const [address, setAddress] = useState('');
     const { id } = useParams();
 
     useEffect(() => {
+        isOnA(id)
         const fetchData = async () => {
             await getVolunteer(id);
         };
@@ -41,6 +42,11 @@ export const InfoVoluntering = () => {
         await assignToAVolunteer(id);
 
     }
+
+    const handleLeave = async () => {
+        await leaveAVolunteer(id);
+    }
+    console.log(voluAs)
 
     return (
         <div>
@@ -79,7 +85,9 @@ export const InfoVoluntering = () => {
                                         <div className="h-4 bg-primary mb-2 rounded"></div>
                                         {address && <p className="text-foreground mb-6"><h4>Ubicación:</h4>{address}</p>}
                                     </div>
-                                    <button onClick={handleAsing} class="cssbuttons-io-button">
+                                    
+                                    {voluAs === false ?(
+                                        <button onClick={handleAsing} class="cssbuttons-io-button">
                                         Asignate!
                                         <div class="icon">
                                             <svg
@@ -96,6 +104,25 @@ export const InfoVoluntering = () => {
                                             </svg>
                                         </div>
                                     </button>
+                                    ): (
+                                        <button onClick={handleLeave} class="cssbuttons-io-button">
+                                        Darte de baja!
+                                        <div class="icon">
+                                            <svg
+                                                height="24"
+                                                width="24"
+                                                viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                                    fill="currentColor"
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    )}
                                 </div>
                                 <div className="bg-primary h-1 mb-6 rounded"></div>
                                 <div className="bg-secondary p-6 rounded-lg shadow-lg animated fadeInUp"></div>
