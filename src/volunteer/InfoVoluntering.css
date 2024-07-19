@@ -1,3 +1,39 @@
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Aplicar la animación a los elementos */
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+
 :root {
     --background: hsl(0, 0%, 100%);
     --foreground: hsl(240, 10%, 3.9%);
@@ -10,19 +46,36 @@
 }
 
 .flex {
+    position: relative;
     display: flex;
-    background-image: linear-gradient(
-      rgba(44, 56, 85, 0.188),
-      rgba(100, 125, 187, 0.1)
-    ),
-    url('../assets/img/backVoluInfo.jpg');
+    flex-direction: column; /* Default to column for mobile first */
+    background-image: url('../assets/img/backVoluInfo.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    color: white; 
 }
 
-.lg\\:flex-row {
-    flex-direction: row;
+@media (min-width: 1024px) {
+    .flex {
+        flex-direction: row; /* Change to row for larger screens */
+    }
+}
+
+.flex::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(109, 111, 117, 0.297); 
+    z-index: 1;
+}
+
+.flex > * {
+    position: relative;
+    z-index: 2; 
 }
 
 .min-h-screen {
@@ -33,8 +86,14 @@
     padding: 2rem;
 }
 
-.lg\\:w-1\\\3 {
-    width: 33.3333%;
+.lg\\:w-1\\3 {
+    width: 100%; /* Default to 100% width for mobile */
+}
+
+@media (min-width: 1024px) {
+    .lg\\:w-1\\3 {
+        width: 33.3333%; /* Change to 33% for larger screens */
+    }
 }
 
 .bg-background {
@@ -54,7 +113,7 @@
 }
 
 .text-primary {
-    color: var(--primary);
+    color: rgb(57, 57, 57);
 }
 
 .text-foreground {
@@ -91,7 +150,7 @@
 
 .h-4 {
     height: 1rem;
-    width: 120%;
+    width: 100%; /* Ensure the bar fits within its container */
 }
 
 .h-2 {
@@ -111,7 +170,7 @@
 }
 
 .h-full {
-    height: 200%;
+    height: 100%;
 }
 
 .opacity-50 {
@@ -141,3 +200,72 @@
 .lg\\:items-center {
     align-items: center;
 }
+
+@media (min-width: 640px) {
+    .sm\\:text-3xl {
+        font-size: 1.5rem;
+    }
+
+    .sm\\:p-8 {
+        padding: 2rem;
+    }
+}
+
+.cargando{
+    width: 50%;
+    height: 50%;
+}
+
+.cssbuttons-io-button {
+    background: #01602f;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  
