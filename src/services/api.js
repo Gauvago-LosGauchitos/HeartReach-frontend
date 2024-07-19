@@ -55,7 +55,7 @@ export const getOrgId = async(orgId) =>{
 //Buscar usuario por coincidencia
 export const searchUsers = async (query) => {
     try {
-        const response = await apiClient.get(/user/search/users?query=${query});
+        const response = await apiClient.get('/user/search/users?query=${query}');
         return response.data;
     } catch (error) {
         console.error("Error searching users:", error);
@@ -66,7 +66,7 @@ export const searchUsers = async (query) => {
 //Buscar organizacion por coincidencia
 export const searchOrganizations = async (query) => {
     try {
-        const response = await apiClient.get(/org/search/organizations?query=${query});
+        const response = await apiClient.get('/org/search/organizations?query=${query}');
         return response.data;
     } catch (error) {
         console.error("Error searching organizations:", error);
@@ -272,6 +272,8 @@ export const registerOrganizationReview = async (reviewData) => {
         throw error;
     }
 };
+
+
 // funcion para mostrar las revews de la organizacion(no funca)
 export const getAllReviews = async (orgaId) => {
     try {
@@ -287,6 +289,7 @@ export const getAllReviews = async (orgaId) => {
         throw error; 
     }
 };
+
 // Funcion para mostrar todas las revews(esta mal hecho pero bueh)
 export const getRevew = async() =>{
     try {
@@ -295,5 +298,15 @@ export const getRevew = async() =>{
     } catch (error) {
         error: true,
         error
+    }
+}
+
+
+export const getlistarVolunteeringDisponiblesEnCurso = async (id) => {
+    try {
+        const response = await apiClient.post('/volu/listarVolunteeringDisponiblesEnCurso', {organizationId:id});
+        return response.data; 
+    } catch (error) {
+        return { error: true, message: error.message }; 
     }
 }

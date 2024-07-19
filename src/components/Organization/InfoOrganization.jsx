@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './InfoOrganization.css';
-import { StarRating, StarRatingSee } from './starRating.jsx'; 
+import { StarRating, StarRatingSee } from './starRating.jsx';
 import ImgDefault from '../../assets/img/bg.svg';
 import ImgWaos from '../../assets/img/ensalada-1.png';
 import timexD from '../../assets/img/time.svg';
@@ -12,11 +12,13 @@ import { Spinner } from '../../assets/spinner/spinner.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import { Footer } from '../Footer/Footer.jsx';
 import { registerOrganizationReview, getRevew } from '../../services/api.js';
+import Imgprueba from '../../assets/img/imgPrueba.jpg';
 
 export const InfoOrganization = () => {
     const [loading, setLoading] = useState(true);
+    const [volunteeringData, setVolunteeringData] = useState([]);
     const { id } = useParams();
-    const { getOrgsId, selectedOrg, isLoading } = useOrganization();
+    const { getOrgsId, selectedOrg, isLoading, fetchVolunteering } = useOrganization();
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
     const [message, setMessage] = useState('');
@@ -26,11 +28,30 @@ export const InfoOrganization = () => {
     useEffect(() => {
         const fetchData = async () => {
             await getOrgsId(id);
+            await fetchVolunteeringData();
             await fetchReviews();
             setLoading(false);
         };
         fetchData();
     }, [id]);
+
+    const fetchVolunteeringData = async () => {
+        try {
+            const response = await fetchVolunteering(id);
+            console.log('Volunteering Data Response:', response);
+            if (response.error) {
+                console.error('Error fetching volunteering data:', response.message);
+                setError(response.message);
+            } else {
+                setVolunteeringData(response.data);
+            }
+        } catch (err) {
+            console.error('Error fetching volunteering data:', err);
+            setError(err.message);
+        }
+    };
+
+
 
     const fetchReviews = async () => {
         try {
@@ -154,6 +175,36 @@ export const InfoOrganization = () => {
                             </div>
                         ))}
                     </section>
+
+                    <div className="card-container">
+                        {volunteeringData.length > 0 ? (
+                            volunteeringData.map((volunteer, index) => (
+                                <div key={index} className="custom-card">
+                                    <div className="image-section">
+                                        <img src={Imgprueba} alt='' />
+                                    </div>
+                                    <div className="content-section">
+                                        <a>
+                                            <span className="title-text">
+                                                {volunteer.title}
+                                            </span>
+                                        </a>
+                                        <p className="description-text">
+                                            {volunteer.description}  {/* Asegúrate de que este campo existe */}
+                                        </p>
+                                        <a className="action-button" href="#">
+                                            Find out more
+                                            <span aria-hidden="true">→</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No hay voluntariados disponibles.</p>
+                        )}
+                    </div>
+
+
                 </div>
             )}
             <Footer />
