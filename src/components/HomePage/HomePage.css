@@ -171,6 +171,45 @@
   text-align: center;
 }
 
+.slider {
+  width: 95vw;
+  height: auto;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  
+  background-color: #f4f4f4;
+}
+
+.slider .slide-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  -webkit-animation: scroll 40s linear infinite;
+  width: calc(200px * 14);
+}
+
+.slider .slide {
+  width: 200px;
+  flex-shrink: 0; /* Asegura que los slides no se encogen */
+  margin: 10px; /* Añade un pequeño margen entre slides */
+}
+
+.slider .slide img {
+  width: 100%;
+  border-radius: 10px; /* Bordes redondeados para las imágenes */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para las imágenes */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-200px * 7)); /* Ajusta según el número de slides visibles */
+  }
+}
+
+
 @media screen and (max-width: 1230px) {
   .header__container {
     flex-direction: column;
@@ -338,6 +377,10 @@
   padding: 20px;
   text-align: center;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .newsletter h2 {
@@ -354,19 +397,29 @@
   width: 300px;
 }
 
-.newsletter button {
-  background-color: #d4af37;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
-.newsletter button:hover {
-  background-color: #b38d2c;
-}
+
+.newsletter button {
+  border: 2px solid #ef923b;
+  background-color: #ef923b;
+  border-radius: 0.9em;
+  padding: 0.8em 1.2em 0.8em 1em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+ }
+ 
+ .newsletter button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+ }
+ 
+ .newsletter button:hover {
+  background-color: #e95d1d;
+ }
+
 
 @media screen and (max-width: 1230px) {
   .header__container {
