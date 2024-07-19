@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
 import imgVoluDefault from '../../assets/img/imhHeroe.jpg';
@@ -12,7 +13,7 @@ import { useVolunteer } from '../../shared/hooks/useVolunteer.jsx';
 export const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const { volunteers, isLoading } = useVolunteer();
-
+    const navigate = useNavigate()
     console.log('Voluntariados array:', volunteers);
 
     useEffect(() => {
@@ -54,6 +55,14 @@ export const HomePage = () => {
 
     const upcomingVolunteers = getUpcomingVolunteers(volunteers);
 
+    const handleGoToVolunterings = () => {
+        navigate('/VoluntersView')
+    }
+
+    const handleGoToOrganizatiosn = () =>{
+        navigate('/organizations')
+    }
+
     return (
         <div>
             {loading ? (
@@ -94,7 +103,8 @@ export const HomePage = () => {
                             ))}
 
                         </div>
-
+                        <button onClick={handleGoToVolunterings} class="buttonVo"> Explora mas voluntariados
+                        </button>
                     </section>
 
                     <section className="map-section">
@@ -138,11 +148,55 @@ export const HomePage = () => {
                         </div>
                     </section>
 
+                    <div>
+
+                        <section class="home">
+                            <div class="description">
+                                <h1 class="title">
+                                    <span class="gradient-text">Conoce a las ORG</span> y descubre quien esta destras del voluntariado
+                                </h1>
+                                <p class="paragraph">
+                                    Descubre las organizaciónes asociadas a nuestra página y descubre su increible historia.
+                                </p>
+                                <button onClick={handleGoToOrganizatiosn} class="buttonVo"> Explora las organizaciónes
+                                </button>
+                            </div>
+
+
+                            <div class="users-color-container">
+                                <span class="item" ></span>
+                                <img
+                                    class="item"
+                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/274f29ce-0d3f-4ac2-a2aa-f9b7bd188b2a"
+                                    alt="" />
+                                <span class="item" ></span>
+                                <img
+                                    class="item"
+                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/b8a14493-3d9f-4b9b-b93a-56d0bc7243e9"
+                                    alt="" />
+
+                                <img
+                                    class="item"
+                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/03e51e1e-9750-45a5-b75e-a1e341d4562a"
+                                    alt="" />
+                                <span class="item" ></span>
+                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/5eb50f89-3e5a-480e-860c-8d40d3ba9ffe" alt="" />
+                                <span class="item" ></span>
+
+                                <span class="item" ></span>
+                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/86c71a79-2efe-4567-8665-b1e5a1fd9735" alt="" />
+                                <span class="item" ></span>
+                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/97ef9643-5202-41aa-80f0-ceeabccdd099" alt="" />
+                            </div>
+                        </section>
+
+                    </div>
+
                     <section class="newsletter">
                         <h2>Suscríbete a Nuestro Newsletter</h2>
                         <form>
-                            <input type="email" placeholder="Tu correo electrónico"/>
-                                <button type="submit">Suscribirse</button>
+                            <input type="email" placeholder="Tu correo electrónico" />
+                            <button type="submit">Suscribirse</button>
                         </form>
                     </section>
 
@@ -153,6 +207,8 @@ export const HomePage = () => {
                             <button type="submit">Enviar</button>
                         </form>
                     </section>
+
+
 
                     <Footer />
                 </div>
