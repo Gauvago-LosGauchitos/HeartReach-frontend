@@ -15,7 +15,6 @@ import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
 import { Spinner } from '../../assets/spinner/spinner';
 import { useVolunteer } from '../../shared/hooks/useVolunteer.jsx';
-import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
     const navigate = useNavigate();
