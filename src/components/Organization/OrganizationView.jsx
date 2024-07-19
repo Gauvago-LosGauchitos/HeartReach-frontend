@@ -8,6 +8,7 @@ import { NavBar } from '../NavBar/NavBar';
 import { Spinner } from '../../assets/spinner/spinner';
 import { Footer } from '../Footer/Footer.jsx';
 
+
 export const OrganizationView = () => {
   const [loading, setLoading] = useState(true)
   const { org, isLoading } = useOrganization();

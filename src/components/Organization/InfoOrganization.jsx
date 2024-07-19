@@ -12,6 +12,7 @@ import { Spinner } from '../../assets/spinner/spinner.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import { Footer } from '../Footer/Footer.jsx';
 import { registerOrganizationReview, getRevew } from '../../services/api.js';
+import { useNavigate } from 'react-router-dom';
 
 export const InfoOrganization = () => {
     const [loading, setLoading] = useState(true);

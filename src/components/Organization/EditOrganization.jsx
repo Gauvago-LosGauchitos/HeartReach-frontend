@@ -3,9 +3,12 @@ import { NavBar } from "../NavBar/NavBar"
 import { Footer } from "../Footer/Footer"
 import { Spinner } from "../../assets/spinner/spinner"
 import './EditOrganization.css'
+import { useParams } from "react-router-dom"
 
 export const EditOrganization = () => {
     const [loading, setLoading] = useState(true)
+    const { id } = useParams();
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -22,6 +25,7 @@ export const EditOrganization = () => {
                 <div>
                     <NavBar />
                     <center>
+                        
                         <div class="card">
                             <div class="card-header">
                                 <div class="text-header">Editar Organización</div>
