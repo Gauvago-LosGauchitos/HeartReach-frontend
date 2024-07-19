@@ -12,7 +12,6 @@ import { Spinner } from '../../assets/spinner/spinner.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import { Footer } from '../Footer/Footer.jsx';
 import { registerOrganizationReview, getRevew } from '../../services/api.js';
-import Imgprueba from '../../assets/img/imgPrueba.jpg';
 
 export const InfoOrganization = () => {
     const [loading, setLoading] = useState(true);
