@@ -13,7 +13,7 @@ import { VoluntersView } from './src/volunteer/VolunteersView.jsx';
 import { EditOrganization } from './src/components/Organization/EditOrganization.jsx';
 import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
 import {Solicitudes} from './src/components/Solicitudes/Solicitudes.jsx'
-import AdminPanel from './src/components/AdminPanel/AdminPanel.jsx';
+import {AdminPanel} from './src/components/AdminPanel/AdminPanel.jsx';
 
 
 
