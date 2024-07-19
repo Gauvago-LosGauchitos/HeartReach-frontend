@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getOrgs, getOrgId, getlistarVolunteeringDisponiblesEnCurso } from '../../services/api.js';
+import { getOrgs, getOrgId, getlistarVolunteeringDisponiblesEnCurso, editOrganization } from '../../services/api.js';
 
 export const useOrganization = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -59,6 +59,19 @@ export const useOrganization = () => {
         setIsLoading(false);
     }
   };
+
+  const editOrg = async (orgData)=>{
+    setIsLoading(true);
+    try{
+      
+    } catch (error) {
+            setError("Error al actualizar la organización");
+            console.error("Error al actualizar la organización:", error);
+        } finally {
+            setIsLoading(false);
+        }
+  }
+
 
   useEffect(() => {
     fetchOrgs();
