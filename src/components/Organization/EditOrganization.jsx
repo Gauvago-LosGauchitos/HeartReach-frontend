@@ -26,7 +26,7 @@ export const EditOrganization = () => {
                     <NavBar />
                     <center>
                         
-                        <div class="card">
+                        <div class="card-org">
                             <div class="card-header">
                                 <div class="text-header">Editar Organización</div>
                             </div>

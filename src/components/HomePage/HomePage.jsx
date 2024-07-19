@@ -3,6 +3,13 @@ import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
 import imgVoluDefault from '../../assets/img/imhHeroe.jpg';
 import ScrollReveal from 'scrollreveal';
+import Carrusel1 from '../../assets/img/carrusel1.jpg'
+import Carrusel2 from '../../assets/img/carrusel2.jpg'
+import Carrusel3 from '../../assets/img/carrusel3.jpg'
+import Carrusel4 from '../../assets/img/carrusel4.jpg'
+import Carrusel5 from '../../assets/img/carrusel5.jpg'
+import Carrusel6 from '../../assets/img/carrusel6.jpg'
+import Carrusel7 from '../../assets/img/carrusel7.jpg'
 import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
@@ -195,22 +202,69 @@ export const HomePage = () => {
                         </section>
 
                     </div>
+                    <br />
 
                     <section class="newsletter">
                         <h2>Quieres Registrar tu Organización</h2>
                         <form>
-                            <input type="email" placeholder="Tu correo electrónico"/>
-                                <button type="submit">Suscribirse</button>
+                            <button onClick={handleSoliOrganization}>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg> Registra tu Organización
+                                </span>
+                            </button>
                         </form>
+
                     </section>
 
-                    <section class="testimonials">
-                        <h2>Deja tu Testimonio</h2>
-                        <form>
-                            <textarea placeholder="Escribe tu testimonio aquí..."></textarea>
-                            <button type="submit">Enviar</button>
-                        </form>
-                    </section>
+                    <div className="slider">
+                        <div className="slide-track">
+                            <div className="slide">
+                                <img src={Carrusel1} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel2} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel3} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel4} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel5} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel6} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel7} alt="" />
+                            </div>
+
+                            <div className="slide">
+                                <img src={Carrusel1} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel2} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel3} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel4} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel5} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel6} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel7} alt="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    
 
 
 
