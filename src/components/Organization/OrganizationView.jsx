@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './OrganizationView.css';
 import ImgDefault from '../../assets/img/logo.png';
-import imhHeroe from '../../assets/img/imhHeroe.jpg';
+import volDefault from '../../assets/img/VoluntariadoDefault.jpeg';
 import { useNavigate } from 'react-router-dom';
 import { useOrganization } from '../../shared/hooks/useOrganization.jsx';
 import { NavBar } from '../NavBar/NavBar';
@@ -49,7 +49,8 @@ export const OrganizationView = () => {
                 <div className='container-organization'>
                   {/* Otros elementos */}
                   <div className="YoutubeVideo">
-                    <div className="Image"><img src={orgItem?.images} alt="Logo" className='logo-organization'/></div>
+                    <div className="Image"><img src={orgItem?.images && orgItem.images.length > 0 ? orgItem.images : volDefault} 
+                      alt='Organization' className='logo-organization'/></div>
                     <div className="Icon"> <img src={ImgDefault} alt="Organization Logo" className='img' /></div>
                     <div className="Title"><center><p>{orgItem?.name || "Nombre no disponible"}</p></center></div>
                     <div className="Name"><p>{orgItem?.address || "Correo no disponible"}</p></div>
