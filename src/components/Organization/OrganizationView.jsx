@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import './OrganizationView.css';
 import ImgDefault from '../../assets/img/logo.png';
-import imhHeroe from '../../assets/img/imhHeroe.jpg'
+import imhHeroe from '../../assets/img/imhHeroe.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useOrganization } from '../../shared/hooks/useOrganization.jsx';
 import { NavBar } from '../NavBar/NavBar';
 import { Spinner } from '../../assets/spinner/spinner';
 
 export const OrganizationView = () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const { org, isLoading } = useOrganization();
   const navigate = useNavigate();
 
   // Verificar la estructura de los datos
   console.log('Organization data:', org);
-  const hanadlerInfoOrg = (id) => {
+  const handlerInfoOrg = (id) => {
     navigate(`/infoOrganization/${id}`);
-  }
+  };
 
   // Verificar si org.organizations es un array o un objeto
   let organizations = [];
@@ -28,13 +28,12 @@ export const OrganizationView = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false)
-    }, 600)
-    return () => clearTimeout(timer)
-  }, [])
+      setLoading(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-
     <div>
       {loading ? (
         <Spinner />
@@ -44,17 +43,16 @@ export const OrganizationView = () => {
           <h2 className="section__header">Escoje tu proximo voluntariado</h2>
           <div className='object'>
             {!isLoading && organizations.map((orgItem, index) => (
-              <div key={index} className='target' onClick={() => hanadlerInfoOrg(orgItem._id)}>
+              <div key={index} className='target' onClick={() => handlerInfoOrg(orgItem._id)}>
                 <div className='container-organization'>
                   {/* Otros elementos */}
-                  <div class="YoutubeVideo">
-                    <div class="Image"><img src={orgItem?.images} alt="Logo" className='logo-organization'/></div>
-                    <div class="Icon"> <img src={ImgDefault} alt="Organization Logo" className='img' /></div>
-                    <div class="Title"><center><p>{orgItem?.name || "Nombre no disponible"}</p></center></div>
-                    <div class="Name"><p>{orgItem?.address || "Correo no disponible"}</p></div>
-                    <div class="Tel"><p>Tel: {orgItem?.phone || "Telefono no disponible"}</p></div>
+                  <div className="YoutubeVideo">
+                    <div className="Image"><img src={orgItem?.images} alt="Logo" className='logo-organization'/></div>
+                    <div className="Icon"> <img src={ImgDefault} alt="Organization Logo" className='img' /></div>
+                    <div className="Title"><center><p>{orgItem?.name || "Nombre no disponible"}</p></center></div>
+                    <div className="Name"><p>{orgItem?.address || "Correo no disponible"}</p></div>
+                    <div className="Tel"><p>Tel: {orgItem?.phone || "Telefono no disponible"}</p></div>
                   </div>
-                  
                 </div>
               </div>
             ))}
@@ -63,4 +61,4 @@ export const OrganizationView = () => {
       )}
     </div>
   );
-}
+};

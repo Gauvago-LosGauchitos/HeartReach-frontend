@@ -16,9 +16,8 @@ import Imgprueba from '../../assets/img/imgPrueba.jpg';
 
 export const InfoOrganization = () => {
     const [loading, setLoading] = useState(true);
-    const [volunteeringData, setVolunteeringData] = useState([]);
     const { id } = useParams();
-    const { getOrgsId, selectedOrg, isLoading, fetchVolunteering } = useOrganization();
+    const { getOrgsId, selectedOrg, isLoading, fetchVolunteering, volunteering } = useOrganization();
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
     const [message, setMessage] = useState('');
@@ -27,31 +26,14 @@ export const InfoOrganization = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            console.log(`Fetching organization with id: ${id}`);
             await getOrgsId(id);
-            await fetchVolunteeringData();
+            await fetchVolunteering(id);
             await fetchReviews();
             setLoading(false);
         };
         fetchData();
     }, [id]);
-
-    const fetchVolunteeringData = async () => {
-        try {
-            const response = await fetchVolunteering(id);
-            console.log('Volunteering Data Response:', response);
-            if (response.error) {
-                console.error('Error fetching volunteering data:', response.message);
-                setError(response.message);
-            } else {
-                setVolunteeringData(response.data);
-            }
-        } catch (err) {
-            console.error('Error fetching volunteering data:', err);
-            setError(err.message);
-        }
-    };
-
-
 
     const fetchReviews = async () => {
         try {
@@ -177,8 +159,8 @@ export const InfoOrganization = () => {
                     </section>
 
                     <div className="card-container">
-                        {volunteeringData.length > 0 ? (
-                            volunteeringData.map((volunteer, index) => (
+                        {volunteering.length > 0 ? (
+                            volunteering.map((volunteer, index) => (
                                 <div key={index} className="custom-card">
                                     <div className="image-section">
                                         <img src={Imgprueba} alt='' />
@@ -203,8 +185,6 @@ export const InfoOrganization = () => {
                             <p>No hay voluntariados disponibles.</p>
                         )}
                     </div>
-
-
                 </div>
             )}
             <Footer />
