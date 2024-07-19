@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
-import { getVolunteerTypes, registerVolunteer, listVolunteers, getVolunteerById } from "../../services/api"
+import { getVolunteerTypes, registerVolunteer, listVolunteers, getVolunteerById, assignVolunteer } from "../../services/api"
+import toast from "react-hot-toast";
+
 
 export const useVolunteer = () => {
     const [typesVolunteer, setTypesVolunteer, listVolunteer] = useState()
@@ -30,6 +32,7 @@ export const useVolunteer = () => {
             return response
             
         } catch (err) {
+            toast.error(err.response.data.message);
             console.error("Error al registrar el voluntariado:", err);
             setError(err.message);
         } finally {
@@ -46,6 +49,7 @@ export const useVolunteer = () => {
             return response.data.data
             
         } catch (err) {
+            toast.error(err.response.data.message);
             console.error("Error al obtener los voluntariados:", err);
             setError(err.message);
         } finally {
@@ -62,7 +66,24 @@ export const useVolunteer = () => {
             return response
             
         } catch (err) {
+            toast.error(err.response.data.message);
             console.error("Error al obtener el voluntariado:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    //Asignarse al voluntariado
+    const assignToAVolunteer = async (id) =>{
+        setLoading(true)
+        try {
+            const response = await assignVolunteer(id)
+            return response
+            
+        } catch (err) {
+            toast.error(err.response.data.message);
+            console.error("Error al asignarse a el voluntariado:", err);
             setError(err.message);
         } finally {
             setLoading(false);
@@ -82,7 +103,8 @@ export const useVolunteer = () => {
         registerVolunteers,
         volunteers,
         selectedVolu,
-        getVolunteer
+        getVolunteer,
+        assignToAVolunteer
 
     }
 }
