@@ -342,6 +342,7 @@ export const getRevew = async() =>{
 export const getlistarVolunteeringDisponiblesEnCurso = async (id) => {
     try {
         const response = await apiClient.post('/volu/listarVolunteeringDisponiblesEnCurso', {organizationId:id});
+        console.log(response)
         return response.data; 
     } catch (error) {
         return { error: true, message: error.message }; 
