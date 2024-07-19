@@ -257,3 +257,31 @@ export const getVolunteerById = async (id) => {
     }
 
 }
+
+export const getPendingOrgs = async () => {
+    try {
+        const response = await apiClient.get('/org/get/pending');
+        return response.data.organizations;
+    } catch (error) {
+        console.error('Error getting pending organizations:', error);
+        throw error;
+    }
+};
+
+export const confirmOrganization = async (data) => {
+    try {
+        return await apiClient.put('/org/confirm', data);
+    } catch (error) {
+        toast.error('Error al aceptar la organización.');
+        throw error;
+    }
+};
+
+export const rejectOrganization = async (data) => {
+    try {
+        return await apiClient.put('/org/deny', data);
+    } catch (error) {
+        toast.error('Error al denegar la organización.');
+        throw error;
+    }
+};

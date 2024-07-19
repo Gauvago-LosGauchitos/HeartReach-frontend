@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import toast from 'react-hot-toast';
 import userDefault from '../../assets/img/userDefault.png';
-import profileIcon from '../../assets/img/profileIcon.png'; 
-import logoutIcon from '../../assets/img/logOutIcon.png'; 
-import { getUser, updateUser } from '../../services/api';
+import profileIcon from '../../assets/img/profileIcon.png';
+import logoutIcon from '../../assets/img/logOutIcon.png';
+import aprobar from '../../assets/img/aprobar.png';
+import { getUser } from '../../services/api';
+import { getLoggedUser } from '../../utils/auth.js';
 import './NavBar.css';
 
 export const NavBar = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const userU = getLoggedUser();
     const [user, setUser] = useState({
         name: '',
         surname: '',
@@ -23,19 +26,23 @@ export const NavBar = () => {
         imageProfile: '', // Agregar el campo para la imagen de perfil
     });
 
+    const handleHome = () => {
+        navigate('/home');
+    };
 
-    const handleHome = () =>{
-        navigate('/home')
-    }
+    const handleSolicitudes = () => {
+        navigate('/Solicitudes');
+    };
 
-    const logOut = () =>{
+    const logOut = () => {
         localStorage.removeItem('authToken');
-        navigate('/login')
-    }
+        localStorage.removeItem('userLogued');
+        navigate('/login');
+    };
 
-    const handleAbout = () =>{
-        navigate('/AboutUs')
-    }
+    const handleAbout = () => {
+        navigate('/AboutUs');
+    };
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -77,7 +84,7 @@ export const NavBar = () => {
                 <div className="searchBox">
                     <input className="searchInput" type="text" name="" placeholder="Search" />
                     <button className="searchButton" href="#">
-                    </button>   
+                    </button>
                 </div>
             </div>
             <div className="right-section">
@@ -89,7 +96,6 @@ export const NavBar = () => {
                         <div className="dropdown-menu">
                             <div className="dropdown-header">
                                 <img src={user.imageProfile || userDefault} alt="user icon" className="user-dropdown-image" />
-                                
                                 <div className="user-name">{user.name || ''}</div>
                             </div>
                             <div className="dropdown-links">
@@ -97,8 +103,13 @@ export const NavBar = () => {
                                     <img src={profileIcon} alt="Profile Icon" className="dropdown-icon" /> Profile
                                 </a>
                                 <a href="#" className="dropdown-link" onClick={logOut}>
-                                    <img src={logoutIcon}  alt="Logout Icon" className="dropdown-icon" /> Logout
+                                    <img src={logoutIcon} alt="Logout Icon" className="dropdown-icon" /> Logout
                                 </a>
+                                {userU && userU.role === 'ADMIN' && (
+                                    <a href="#" className="dropdown-link" onClick={handleSolicitudes}>
+                                        <img src={aprobar} alt="Requests Icon" className="dropdown-icon" /> Solicitudes
+                                    </a>
+                                )}
                             </div>
                         </div>
                     )}

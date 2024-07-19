@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { loginRequest, registerRequest } from "../../services/api";
-
+import { loginRequest, registerRequest } from "../../services/api"; // No necesitamos getLoguedUser aquí
+import { getLoggedUser } from '../../utils/auth.js';
 
 export const useAuth = () => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [userU, setUserU] = useState(null);
 
     const login = async (identifier, password) => {
         setIsLoading(true);
@@ -25,17 +27,16 @@ export const useAuth = () => {
             } else {
                 toast.success('¡Has iniciado sesión!');
                 const userData = {
-                  id: response.data.loggedUser.uid,
-                  name: response.data.loggedUser.name,
-                  username: response.data.loggedUser.username,
-                  role: response.data.loggedUser.role
-                  
+                    id: response.data.loggedUser.uid,
+                    name: response.data.loggedUser.name,
+                    username: response.data.loggedUser.username,
+                    role: response.data.loggedUser.role
                 }
                 // Guardar el token en localStorage
                 localStorage.setItem('authToken', response.data.token);
                 localStorage.setItem('userLogued', JSON.stringify(userData));
-                
 
+                setUserU(userData); // Establecer el usuario autenticado
                 return true;
             }
         } catch (error) {
@@ -47,39 +48,46 @@ export const useAuth = () => {
         }
     }
 
-    const register = async (name, surname, dpi, username, password, email, phone,
-        habilities, imageProfile) => {
-        setIsLoading(true)
+    const register = async (name, surname, dpi, username, password, email, phone, habilities, imageProfile) => {
+        setIsLoading(true);
         const user = {
-          name,
-          surname,
-          dpi,
-          username,
-          password,
-          email,
-          phone,
-          habilities,
-          imageProfile
+            name,
+            surname,
+            dpi,
+            username,
+            password,
+            email,
+            phone,
+            habilities,
+            imageProfile
         }
-        const response = await registerRequest(user, imageProfile = '')
-        setIsLoading(false)
-    
+        const response = await registerRequest(user);
+        setIsLoading(false);
+
         if (response.error) {
-          return toast.error(
-            response?.e?.response?.data ||
-            'Error general al intentar registrar el usuario. Intenta de nuevo.'
-          )
+            toast.error(
+                response?.e?.response?.data ||
+                'Error general al intentar registrar el usuario. Intenta de nuevo.'
+            );
         } else {
-          toast.success('¡Te haz registrado ahora inicia sesion!')
+            toast.success('¡Te haz registrado ahora inicia sesion!');
         }
-        console.log(response)
-      }
+        console.log(response);
+    }
 
+    useEffect(() => {
+        const user = getLoggedUser();
+        if (user) {
+            setUserU(user);
+        }
+        setLoading(false);
+    }, []);
 
-  return {
-    login,
-    register,
-    isLoading
+    return {
+        userU,
+        login,
+        loading,
+        register,
+        isLoading
+    }
 }
-}
-
