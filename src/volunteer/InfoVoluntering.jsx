@@ -80,7 +80,7 @@ export const InfoVoluntering = () => {
                                         {address && <p className="text-foreground mb-6"><h4>Ubicación:</h4>{address}</p>}
                                     </div>
                                     <button onClick={handleAsing} class="cssbuttons-io-button">
-                                        Asígnate!
+                                        Asignate!
                                         <div class="icon">
                                             <svg
                                                 height="24"
