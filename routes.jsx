@@ -12,6 +12,8 @@ import { InfoVoluntering } from './src/volunteer/InfoVoluntering.jsx';
 import { VoluntersView } from './src/volunteer/VolunteersView.jsx';
 import { EditOrganization } from './src/components/Organization/EditOrganization.jsx';
 import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
+import {Solicitudes} from './src/components/Solicitudes/Solicitudes.jsx'
+import AdminPanel from './src/components/AdminPanel/AdminPanel.jsx';
 
 
 
@@ -32,6 +34,8 @@ export const AppRoutes = () => {
         <Route path='/infoVoluntering/:id' element={<InfoVoluntering/>}/>
         <Route path='/VoluntersView' element={<VoluntersView/>}/>
         <Route path='/EditOrganization' element={<EditOrganization/>}/>
+        <Route path='/Solicitudes' element={<Solicitudes/>}/>
+        <Route path='/AdminPanel' element={<AdminPanel/>}/>
         </Routes>
   )
 }

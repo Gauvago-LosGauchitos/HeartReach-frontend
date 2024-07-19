@@ -34,6 +34,10 @@ export const NavBar = () => {
         navigate('/Solicitudes');
     };
 
+    const handleAdminPanel = () => {
+        navigate('/AdminPanel');
+    };
+
     const logOut = () => {
         localStorage.removeItem('authToken');
         localStorage.removeItem('userLogued');
@@ -106,9 +110,14 @@ export const NavBar = () => {
                                     <img src={logoutIcon} alt="Logout Icon" className="dropdown-icon" /> Logout
                                 </a>
                                 {userU && userU.role === 'ADMIN' && (
+                                    <>
                                     <a href="#" className="dropdown-link" onClick={handleSolicitudes}>
                                         <img src={aprobar} alt="Requests Icon" className="dropdown-icon" /> Solicitudes
                                     </a>
+                                    <a href="#" className="dropdown-link" onClick={handleSolicitudes}>
+                                        <img src={aprobar} alt="Requests Icon" className="dropdown-icon" /> Solicitudes
+                                    </a>
+                                    </>
                                 )}
                             </div>
                         </div>

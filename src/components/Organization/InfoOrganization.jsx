@@ -162,7 +162,7 @@ export const InfoOrganization = () => {
                             volunteering.map((volunteer, index) => (
                                 <div key={index} className="custom-card">
                                     <div className="image-section">
-                                        <img src={Imgprueba} alt='' />
+                                        
                                     </div>
                                     <div className="content-section">
                                         <a>
