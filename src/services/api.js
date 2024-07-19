@@ -309,6 +309,8 @@ export const registerOrganizationReview = async (reviewData) => {
         throw error;
     }
 };
+
+
 // funcion para mostrar las revews de la organizacion(no funca)
 export const getAllReviews = async (orgaId) => {
     try {
@@ -324,6 +326,7 @@ export const getAllReviews = async (orgaId) => {
         throw error; 
     }
 };
+
 // Funcion para mostrar todas las revews(esta mal hecho pero bueh)
 export const getRevew = async() =>{
     try {
@@ -334,3 +337,43 @@ export const getRevew = async() =>{
         error
     }
 }
+
+
+export const getlistarVolunteeringDisponiblesEnCurso = async (id) => {
+    try {
+        const response = await apiClient.post('/volu/listarVolunteeringDisponiblesEnCurso', {organizationId:id});
+        console.log('API Response:', response.data); 
+        return response.data; 
+    } catch (error) {
+        console.error('Error in API call:', error);
+        return { error: true, message: error.message }; 
+    }
+}
+
+export const getPendingOrgs = async () => {
+    try {
+        const response = await apiClient.get('/org/get/pending');
+        return response.data.organizations;
+    } catch (error) {
+        console.error('Error getting pending organizations:', error);
+        throw error;
+    }
+};
+
+export const confirmOrganization = async (data) => {
+    try {
+        return await apiClient.put('/org/confirm', data);
+    } catch (error) {
+        toast.error('Error al aceptar la organización.');
+        throw error;
+    }
+};
+
+export const rejectOrganization = async (data) => {
+    try {
+        return await apiClient.put('/org/deny', data);
+    } catch (error) {
+        toast.error('Error al denegar la organización.');
+        throw error;
+    }
+};

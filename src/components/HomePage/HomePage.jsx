@@ -9,11 +9,12 @@ import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
 import { Spinner } from '../../assets/spinner/spinner';
 import { useVolunteer } from '../../shared/hooks/useVolunteer.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const { volunteers, isLoading } = useVolunteer();
-    const navigate = useNavigate()
     console.log('Voluntariados array:', volunteers);
 
     useEffect(() => {
@@ -61,6 +62,10 @@ export const HomePage = () => {
 
     const handleGoToOrganizatiosn = () =>{
         navigate('/organizations')
+    }
+
+    const handleSoliOrganization = () =>{
+        navigate('/SoliOrganization')
     }
 
     return (
@@ -193,10 +198,10 @@ export const HomePage = () => {
                     </div>
 
                     <section class="newsletter">
-                        <h2>Suscríbete a Nuestro Newsletter</h2>
+                        <h2>Quieres Registrar tu Organización</h2>
                         <form>
-                            <input type="email" placeholder="Tu correo electrónico" />
-                            <button type="submit">Suscribirse</button>
+                            <input type="email" placeholder="Tu correo electrónico"/>
+                                <button type="submit">Suscribirse</button>
                         </form>
                     </section>
 

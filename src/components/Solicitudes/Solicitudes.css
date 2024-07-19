@@ -1,0 +1,314 @@
+/* src/components/Solicitudes/Solicitudes.css */
+
+.body-soli {
+    padding: 20px;
+    background-color: antiquewhite;
+}
+
+.solicitudes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    --bg-card: #27272a;
+    --primary: #9C9868;
+    --primary-800: #746C54;
+    --primary-shadow: #080808;
+    --light: #d9d9d9;
+    --zinc-800: #000000;
+    --bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding: 1rem;
+    width: calc(25% - 20px); /* Adjust the width to fit 4 cards per row, considering the gap */
+    background-color: var(--bg-card);
+
+    border-radius: 1rem;
+}
+
+.image_container {
+    overflow: hidden;
+    cursor: pointer;
+
+    position: relative;
+    z-index: 5;
+
+    width: 100%;
+    height: 8rem;
+    background-color: var(--primary-800);
+
+    border-radius: 0.5rem;
+}
+
+.image_container .image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 3rem;
+    fill: var(--light);
+}
+
+.title-Soli span {
+    overflow: hidden;
+    width: 100%;
+    font-size: 2.5rem; /* Aumentar el tamaño de la fuente */
+    font-weight: 600;
+    color: var(--light);
+    text-transform: capitalize;
+    white-space: nowrap; /* Cambiar text-wrap a white-space */
+    text-overflow: ellipsis;
+    margin-bottom: 1rem; /* Añadir un margen inferior */
+}
+
+.size {
+    font-size: 0.75rem;
+    color: var(--light);
+}
+
+.list-size {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    margin-top: 0.25rem;
+}
+
+.list-size .item-list {
+    list-style: none;
+}
+
+.list-size .item-list-button {
+    cursor: pointer;
+
+    padding: 0.5rem;
+    background-color: var(--zinc-800);
+
+    font-size: 0.75rem;
+    color: var(--light);
+
+    border: 2px solid var(--zinc-800);
+    border-radius: 0.25rem;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.item-list-button:hover {
+    border: 2px solid var(--light);
+}
+
+.item-list-button:focus {
+    background-color: var(--primary);
+
+    border: 2px solid var(--primary-shadow);
+
+    box-shadow: inset 0px 1px 4px var(--primary-shadow);
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light);
+}
+
+.cart-button {
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+
+    padding: 0.5rem;
+    width: 100%;
+    background-image: var(--bg-linear);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--light);
+    text-wrap: nowrap;
+
+    border: 2px solid hsla(0, 0%, 0%, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.25rem 1px var(--light);
+}
+
+.cart-button .cart-icon {
+    width: 1rem;
+}
+
+.image_container-soli {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--primary-800);
+    border-radius: 0.5rem;
+}
+
+.image-soli {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.delete-button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #e62222; /* Color de fondo */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    position: relative; /* Para que los elementos hijos se posicionen correctamente */
+}
+
+.delete-button, .delete-button span {
+    transition: 200ms;
+}
+
+.delete-button .text-denegar {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+.delete-button .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-button svg {
+    width: 15px;
+    fill: #eee;
+}
+
+.delete-button:hover {
+    background: #ff3636;
+}
+
+.delete-button:hover .text-denegar {
+    color: transparent;
+}
+
+.delete-button:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.delete-button:focus {
+    outline: none;
+}
+
+.delete-button:active .icon svg {
+    transform: scale(0.8);
+}
+
+.accept-button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #28a745; /* Color de fondo para aceptar */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    position: relative; /* Para que los elementos hijos se posicionen correctamente */
+}
+
+.accept-button, .accept-button span {
+    transition: 200ms;
+}
+
+.accept-button .text-acept {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+.accept-button .icon {
+    position: absolute;
+    border-left: 1px solid #1e7e34;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accept-button svg {
+    width: 15px;
+    fill: #eee;
+}
+
+.accept-button:hover {
+    background: #218838;
+}
+
+.accept-button:hover .text-acept {
+    color: transparent;
+}
+
+.accept-button:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.accept-button:focus {
+    outline: none;
+}
+
+.accept-button:active .icon svg {
+    transform: scale(0.8);
+}
+
+.no-solicitudes {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+}
+
+.no-solicitudes h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.no-solicitudes p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.no-solicitudes-icon svg {
+    fill: #4caf50; 
+    width: 100px;
+    height: 100px;
+}
