@@ -10,7 +10,7 @@ import {ChatApp} from './src/components/Chat/ChatComponents/ChatApp.jsx';
 import { VolunteerRegistrationForm } from './src/volunteer/VolunteerRegister.jsx';
 import { InfoVoluntering } from './src/volunteer/InfoVoluntering.jsx';
 import { VoluntersView } from './src/volunteer/VolunteersView.jsx';
-import { EditOrganization } from './src/components/Organization/EditOrganization.jsx';
+
 import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
 
 
@@ -31,7 +31,6 @@ export const AppRoutes = () => {
         <Route path='/VolunteerRegister' element={<VolunteerRegistrationForm/>}/>
         <Route path='/infoVoluntering/:id' element={<InfoVoluntering/>}/>
         <Route path='/VoluntersView' element={<VoluntersView/>}/>
-        <Route path='/EditOrganization' element={<EditOrganization/>}/>
         </Routes>
   )
 }

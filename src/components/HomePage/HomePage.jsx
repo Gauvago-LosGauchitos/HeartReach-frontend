@@ -8,8 +8,10 @@ import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
 import { Spinner } from '../../assets/spinner/spinner';
 import { useVolunteer } from '../../shared/hooks/useVolunteer.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const { volunteers, isLoading } = useVolunteer();
 
@@ -53,6 +55,10 @@ export const HomePage = () => {
     };
 
     const upcomingVolunteers = getUpcomingVolunteers(volunteers);
+
+    const handleSoliOrganization = () =>{
+        navigate('/SoliOrganization')
+    }
 
     return (
         <div>
@@ -139,18 +145,9 @@ export const HomePage = () => {
                     </section>
 
                     <section class="newsletter">
-                        <h2>Suscríbete a Nuestro Newsletter</h2>
+                        <h2>Quieres Registrar tu Organización</h2>
                         <form>
-                            <input type="email" placeholder="Tu correo electrónico"/>
-                                <button type="submit">Suscribirse</button>
-                        </form>
-                    </section>
-
-                    <section class="testimonials">
-                        <h2>Deja tu Testimonio</h2>
-                        <form>
-                            <textarea placeholder="Escribe tu testimonio aquí..."></textarea>
-                            <button type="submit">Enviar</button>
+                                <button onClick={handleSoliOrganization} type="submit">Registra tu Organización</button>
                         </form>
                     </section>
 
