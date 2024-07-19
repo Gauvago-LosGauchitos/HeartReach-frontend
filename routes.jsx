@@ -14,6 +14,7 @@ import { EditOrganization } from './src/components/Organization/EditOrganization
 import {SoliOrganization} from './src/components/Organization/SoliOrganization.jsx'
 import {Solicitudes} from './src/components/Solicitudes/Solicitudes.jsx'
 import {AdminPanel} from './src/components/AdminPanel/AdminPanel.jsx';
+import { AboutUs } from './src/components/AboutUs/AboutUs.jsx';
 
 
 
@@ -36,6 +37,7 @@ export const AppRoutes = () => {
         <Route path='/EditOrganization' element={<EditOrganization/>}/>
         <Route path='/Solicitudes' element={<Solicitudes/>}/>
         <Route path='/AdminPanel' element={<AdminPanel/>}/>
+        <Route path='/AboutUs' element={<AboutUs/>}/>
         </Routes>
   )
 }
