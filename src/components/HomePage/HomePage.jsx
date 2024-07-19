@@ -110,17 +110,14 @@ export const HomePage = () => {
                                     <img src={volunteer.imageVol || imgVoluDefault} alt={volunteer.title} />
                                     <p>{volunteer.title}</p>
                                 </div>
-
                             ))}
-
                         </div>
-                        <button onClick={handleGoToVolunterings} class="buttonVo"> Explora mas voluntariados
-                        </button>
+                        <button onClick={handleGoToVolunterings} class="buttonVo">Explora más voluntariados</button>
                     </section>
 
                     <section className="map-section">
                         <h2>Encuentra Voluntariados Cerca de Ti</h2>
-                        <MapComponent />
+                        <MapComponent volunteers={volunteers} />
                     </section>
 
                     <section className="testimonials">
