@@ -377,3 +377,18 @@ export const rejectOrganization = async (data) => {
         throw error;
     }
 };
+
+//Editar org
+export const editOrganization = async (orgData) => {
+    try {
+        const response = await apiClient.put('/org//update/', orgData,{
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response.data
+    } catch (error) {
+        error: true,
+        error
+    }
+}

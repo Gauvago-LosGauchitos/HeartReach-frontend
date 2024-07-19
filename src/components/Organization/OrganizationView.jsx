@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './OrganizationView.css';
 import ImgDefault from '../../assets/img/logo.png';
-import volDefault from '../../assets/img/VoluntariadoDefault.jpeg';
+import volDefault from '../../assets/img/imgAuth.png'
 import { useNavigate } from 'react-router-dom';
 import { useOrganization } from '../../shared/hooks/useOrganization.jsx';
 import { NavBar } from '../NavBar/NavBar';
