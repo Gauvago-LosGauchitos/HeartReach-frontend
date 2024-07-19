@@ -91,7 +91,7 @@ export const VolunteerRegistrationForm = () => {
                     <p className="titleRVolu">Registrar Voluntariado</p>
                     <p className="message">Regístra y ayuda a tu comunidad.</p>
 
-                    <div className="flex">
+                    <div className="flex2">
                         <label>
                             <input
                                 className="inputRV"
@@ -129,7 +129,7 @@ export const VolunteerRegistrationForm = () => {
                         </label>
                     </div>
 
-                    <div className="flex">
+                    <div className="flex2">
                         <label>
 
                             <select
@@ -160,7 +160,7 @@ export const VolunteerRegistrationForm = () => {
                         )}
                     </div>
 
-                    <div className='flex'>
+                    <div className='flex2'>
                         <label>
                             <textarea
                                 className="inputRV"
@@ -175,7 +175,7 @@ export const VolunteerRegistrationForm = () => {
 
                     </div>
 
-                    <div className="flex">
+                    <div className="flex2">
 
                         <label>
                             <input
