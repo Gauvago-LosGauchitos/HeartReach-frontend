@@ -55,7 +55,7 @@ export const getOrgId = async(orgId) =>{
 //Buscar usuario por coincidencia
 export const searchUsers = async (query) => {
     try {
-        const response = await apiClient.get(/user/search/users?query=${query});
+        const response = await apiClient.get(`/user/search/users?query=${query}`);
         return response.data;
     } catch (error) {
         console.error("Error searching users:", error);
@@ -66,7 +66,7 @@ export const searchUsers = async (query) => {
 //Buscar organizacion por coincidencia
 export const searchOrganizations = async (query) => {
     try {
-        const response = await apiClient.get(/org/search/organizations?query=${query});
+        const response = await apiClient.get(`/org/search/organizations?query=${query}`);
         return response.data;
     } catch (error) {
         console.error("Error searching organizations:", error);
