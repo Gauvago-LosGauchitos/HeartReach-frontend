@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useOrganization } from '../../shared/hooks/useOrganization.jsx';
 import { NavBar } from '../NavBar/NavBar';
 import { Spinner } from '../../assets/spinner/spinner';
+import { Footer } from '../Footer/Footer.jsx';
 
 export const OrganizationView = () => {
   const [loading, setLoading] = useState(true)
@@ -59,6 +60,7 @@ export const OrganizationView = () => {
               </div>
             ))}
           </div>
+          <Footer />
         </div>
       )}
     </div>
