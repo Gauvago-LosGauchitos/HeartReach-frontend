@@ -7,6 +7,33 @@ const apiClient = axios.create({
     timeout: 30000
 })
 
+export const getUsers = async () => {
+    try {
+        const response = await apiClient.get('/user/get');
+        return response.data.users;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const getAdmins = async () => {
+    try {
+        const response = await apiClient.get('/user/getAdmins');
+        return response.data.users;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const getAdminAssociations = async () => {
+    try {
+        const response = await apiClient.get('/user/getAdminsAsociation');
+        return response.data.users;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const registerRequest = async(user) => {
     try {
         return await apiClient.post('/user/register', user)
@@ -377,3 +404,18 @@ export const rejectOrganization = async (data) => {
         throw error;
     }
 };
+
+//Editar org
+export const editOrganization = async (orgData) => {
+    try {
+        const response = await apiClient.put('/org//update/', orgData,{
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response.data
+    } catch (error) {
+        error: true,
+        error
+    }
+}

@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import userDefault from '../../assets/img/userDefault.png';
 import profileIcon from '../../assets/img/profileIcon.png';
 import logoutIcon from '../../assets/img/logOutIcon.png';
+import adminPanel from '../../assets/img/panel-de-control.png';
 import aprobar from '../../assets/img/aprobar.png';
 import { getUser } from '../../services/api';
 import { getLoggedUser } from '../../utils/auth.js';
@@ -114,8 +115,8 @@ export const NavBar = () => {
                                     <a href="#" className="dropdown-link" onClick={handleSolicitudes}>
                                         <img src={aprobar} alt="Requests Icon" className="dropdown-icon" /> Solicitudes
                                     </a>
-                                    <a href="#" className="dropdown-link" onClick={handleSolicitudes}>
-                                        <img src={aprobar} alt="Requests Icon" className="dropdown-icon" /> Solicitudes
+                                    <a href="#" className="dropdown-link" onClick={handleAdminPanel}>
+                                        <img src={adminPanel} alt="Requests Icon" className="dropdown-icon" /> Admin Panel
                                     </a>
                                     </>
                                 )}

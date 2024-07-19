@@ -3,6 +3,13 @@ import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
 import imgVoluDefault from '../../assets/img/imhHeroe.jpg';
 import ScrollReveal from 'scrollreveal';
+import Carrusel1 from '../../assets/img/carrusel1.jpg'
+import Carrusel2 from '../../assets/img/carrusel2.jpg'
+import Carrusel3 from '../../assets/img/carrusel3.jpg'
+import Carrusel4 from '../../assets/img/carrusel4.jpg'
+import Carrusel5 from '../../assets/img/carrusel5.jpg'
+import Carrusel6 from '../../assets/img/carrusel6.jpg'
+import Carrusel7 from '../../assets/img/carrusel7.jpg'
 import { NavBar } from '../NavBar/NavBar';
 import { Footer } from '../Footer/Footer';
 import { MapComponent } from '../../assets/mapContent';
@@ -150,38 +157,113 @@ export const HomePage = () => {
                     </section>
 
                     <div>
+
                         <section class="home">
                             <div class="description">
                                 <h1 class="title">
-                                    <span class="gradient-text">Conoce a las ORG</span> y descubre quién está detrás del voluntariado
+                                    <span class="gradient-text">Conoce a las ORG</span> y descubre quien esta destras del voluntariado
                                 </h1>
                                 <p class="paragraph">
-                                    Descubre las organizaciones asociadas a nuestra plataforma, y aprende más sobre las causas que apoyan y cómo tú también puedes contribuir.
+                                    Descubre las organizaciónes asociadas a nuestra página y descubre su increible historia.
                                 </p>
-                                <button onClick={handleGoToOrganizatiosn} class="buttonVo">Ver Organizaciones</button>
+                                <button onClick={handleGoToOrganizatiosn} class="buttonVo"> Explora las organizaciónes
+                                </button>
                             </div>
-                            <div class="image-container">
-                                <img src="src/assets/img/heroImage.jpg" alt="Descripción de la imagen" class="home-image" />
+
+
+                            <div class="users-color-container">
+                                <span class="item" ></span>
+                                <img
+                                    class="item"
+                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/274f29ce-0d3f-4ac2-a2aa-f9b7bd188b2a"
+                                    alt="" />
+                                <span class="item" ></span>
+                                <img
+                                    class="item"
+                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/b8a14493-3d9f-4b9b-b93a-56d0bc7243e9"
+                                    alt="" />
+
+                                <img
+                                    class="item"
+                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/03e51e1e-9750-45a5-b75e-a1e341d4562a"
+                                    alt="" />
+                                <span class="item" ></span>
+                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/5eb50f89-3e5a-480e-860c-8d40d3ba9ffe" alt="" />
+                                <span class="item" ></span>
+
+                                <span class="item" ></span>
+                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/86c71a79-2efe-4567-8665-b1e5a1fd9735" alt="" />
+                                <span class="item" ></span>
+                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/97ef9643-5202-41aa-80f0-ceeabccdd099" alt="" />
                             </div>
                         </section>
+
+                    </div>
+                    <br />
+
+                    <section class="newsletter">
+                        <h2>Quieres Registrar tu Organización</h2>
+                        <form>
+                            <button onClick={handleSoliOrganization}>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg> Registra tu Organización
+                                </span>
+                            </button>
+                        </form>
+
+                    </section>
+
+                    <div className="slider">
+                        <div className="slide-track">
+                            <div className="slide">
+                                <img src={Carrusel1} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel2} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel3} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel4} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel5} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel6} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel7} alt="" />
+                            </div>
+
+                            <div className="slide">
+                                <img src={Carrusel1} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel2} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel3} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel4} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel5} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel6} alt="" />
+                            </div>
+                            <div className="slide">
+                                <img src={Carrusel7} alt="" />
+                            </div>
+                        </div>
                     </div>
 
-                    <div>
-                        <section class="home">
-                            <div class="description">
-                                <h1 class="title">
-                                    <span class="gradient-text">Solicitar ser ORG</span> y publica tus voluntariados.
-                                </h1>
-                                <p class="paragraph">
-                                    Tu organización también puede formar parte de nuestra plataforma, publica tus voluntariados y encuentra los colaboradores que necesitas.
-                                </p>
-                                <button onClick={handleSoliOrganization} class="buttonVo">Solicitar</button>
-                            </div>
-                            <div class="image-container">
-                                <img src="src/assets/img/heroImage.jpg" alt="Descripción de la imagen" class="home-image" />
-                            </div>
-                        </section>
-                    </div>
+                    
+
+
 
                     <Footer />
                 </div>
