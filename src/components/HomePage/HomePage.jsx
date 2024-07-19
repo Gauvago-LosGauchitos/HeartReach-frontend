@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import personaTexto from '../../assets/img/personaTexto.png';
 import imgVoluDefault from '../../assets/img/imhHeroe.jpg';
