@@ -103,17 +103,14 @@ export const HomePage = () => {
                                     <img src={volunteer.imageVol || imgVoluDefault} alt={volunteer.title} />
                                     <p>{volunteer.title}</p>
                                 </div>
-
                             ))}
-
                         </div>
-                        <button onClick={handleGoToVolunterings} class="buttonVo"> Explora mas voluntariados
-                        </button>
+                        <button onClick={handleGoToVolunterings} class="buttonVo">Explora más voluntariados</button>
                     </section>
 
                     <section className="map-section">
                         <h2>Encuentra Voluntariados Cerca de Ti</h2>
-                        <MapComponent />
+                        <MapComponent volunteers={volunteers} />
                     </section>
 
                     <section className="testimonials">
@@ -153,66 +150,38 @@ export const HomePage = () => {
                     </section>
 
                     <div>
-
                         <section class="home">
                             <div class="description">
                                 <h1 class="title">
-                                    <span class="gradient-text">Conoce a las ORG</span> y descubre quien esta destras del voluntariado
+                                    <span class="gradient-text">Conoce a las ORG</span> y descubre quién está detrás del voluntariado
                                 </h1>
                                 <p class="paragraph">
-                                    Descubre las organizaciónes asociadas a nuestra página y descubre su increible historia.
+                                    Descubre las organizaciones asociadas a nuestra plataforma, y aprende más sobre las causas que apoyan y cómo tú también puedes contribuir.
                                 </p>
-                                <button onClick={handleGoToOrganizatiosn} class="buttonVo"> Explora las organizaciónes
-                                </button>
+                                <button onClick={handleGoToOrganizatiosn} class="buttonVo">Ver Organizaciones</button>
                             </div>
-
-
-                            <div class="users-color-container">
-                                <span class="item" ></span>
-                                <img
-                                    class="item"
-                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/274f29ce-0d3f-4ac2-a2aa-f9b7bd188b2a"
-                                    alt="" />
-                                <span class="item" ></span>
-                                <img
-                                    class="item"
-                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/b8a14493-3d9f-4b9b-b93a-56d0bc7243e9"
-                                    alt="" />
-
-                                <img
-                                    class="item"
-                                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/03e51e1e-9750-45a5-b75e-a1e341d4562a"
-                                    alt="" />
-                                <span class="item" ></span>
-                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/5eb50f89-3e5a-480e-860c-8d40d3ba9ffe" alt="" />
-                                <span class="item" ></span>
-
-                                <span class="item" ></span>
-                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/86c71a79-2efe-4567-8665-b1e5a1fd9735" alt="" />
-                                <span class="item" ></span>
-                                <img class="item" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/97ef9643-5202-41aa-80f0-ceeabccdd099" alt="" />
+                            <div class="image-container">
+                                <img src="src/assets/img/heroImage.jpg" alt="Descripción de la imagen" class="home-image" />
                             </div>
                         </section>
-
                     </div>
 
-                    <section class="newsletter">
-                        <h2>Quieres Registrar tu Organización</h2>
-                        <form>
-                            <input type="email" placeholder="Tu correo electrónico"/>
-                                <button type="submit">Suscribirse</button>
-                        </form>
-                    </section>
-
-                    <section class="testimonials">
-                        <h2>Deja tu Testimonio</h2>
-                        <form>
-                            <textarea placeholder="Escribe tu testimonio aquí..."></textarea>
-                            <button type="submit">Enviar</button>
-                        </form>
-                    </section>
-
-
+                    <div>
+                        <section class="home">
+                            <div class="description">
+                                <h1 class="title">
+                                    <span class="gradient-text">Solicitar ser ORG</span> y publica tus voluntariados.
+                                </h1>
+                                <p class="paragraph">
+                                    Tu organización también puede formar parte de nuestra plataforma, publica tus voluntariados y encuentra los colaboradores que necesitas.
+                                </p>
+                                <button onClick={handleSoliOrganization} class="buttonVo">Solicitar</button>
+                            </div>
+                            <div class="image-container">
+                                <img src="src/assets/img/heroImage.jpg" alt="Descripción de la imagen" class="home-image" />
+                            </div>
+                        </section>
+                    </div>
 
                     <Footer />
                 </div>
