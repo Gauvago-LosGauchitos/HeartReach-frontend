@@ -12,6 +12,7 @@ import { Spinner } from '../../assets/spinner/spinner.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import { Footer } from '../Footer/Footer.jsx';
 import { registerOrganizationReview, getRevew } from '../../services/api.js';
+import Imgprueba from '../../assets/img/imgPrueba.jpg';
 
 export const InfoOrganization = () => {
     const [loading, setLoading] = useState(true);
@@ -22,7 +23,6 @@ export const InfoOrganization = () => {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [reviews, setReviews] = useState([]);
-    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,10 +68,6 @@ export const InfoOrganization = () => {
     const handleRatingChange = (newRating) => {
         setRating(newRating);
     };
-
-    const hanadlerEditOrg = (id) => {
-        navigate('/EditOrganization');
-      }
 
     return (
         <div>
@@ -119,16 +115,6 @@ export const InfoOrganization = () => {
                             <p>{selectedOrg.phone}</p>
                         </div>
                     </section>
-                    <center>
-                    <section>
-                    <button class="learn-more" onClick={hanadlerEditOrg}>
-                        <span class="circle" aria-hidden="true">
-                            <span class="icon arrow"></span>
-                        </span>
-                        <span class="button-text">Editar</span>
-                    </button>
-                    </section>
-                    </center>
                     <section className='review-section'>
                         <form onSubmit={handleSubmitReview}>
                             <h3>Agregar Review</h3>
