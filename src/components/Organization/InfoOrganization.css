@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,21 +8,21 @@
     list-style: none;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
 }
 
-.containe{
+.containe {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.headers{
+.headers {
     display: flex;
     position: relative;
 }
 
-.menu{
+.menu {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,18 +34,18 @@ body{
     float: left;
 }
 
-.logoWaos{
+.logoWaos {
     color: #000;
     font-size: 25px;
     font-weight: 800;
 }
 
-.menu .navbar ul li{
+.menu .navbar ul li {
     position: relative;
     float: left;
 }
 
-.menu .navbar ul li a{
+.menu .navbar ul li a {
     font-size: 18px;
     padding: 20px;
     color: #000;
@@ -54,16 +53,15 @@ body{
     font-weight: 600;
 }
 
-#menu{
+#menu {
     display: none;
 }
 
-.menu-icono{
+.menu-icono {
     width: 25px;
-
 }
 
-.menu label{
+.menu label {
     cursor: pointer;
     display: none;
 }
@@ -75,25 +73,25 @@ body{
     right: 0;
 }
 
-.esp{
+.esp {
     position: absolute;
     top: 700px;
     bottom: 0;
     width: 350px;
 }
 
-.header-infoxd{
+.header-infoxd {
     display: flex;
     align-items: center;
     margin-top: 100px;
 }
 
-.header-txt{
+.header-txt {
     width: 50%;
     padding-right: 35px;
 }
 
-.header-txt h1{
+.header-txt h1 {
     font-size: 55px;
     line-height: 70px;
     font-weight: 600;
@@ -102,13 +100,13 @@ body{
     text-transform: capitalize;
 }
 
-.header-txt p{
+.header-txt p {
     font-size: 16px;
     color: #545454;
     margin-bottom: 35px;
 }
 
-.btn-1{
+.btn-1 {
     display: inline-block;
     background-color: #FF9F0D;
     padding: 13px 30px;
@@ -118,44 +116,150 @@ body{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn-1:hover{
+.btn-1:hover {
     background-color: #EE9003;
 }
 
-.header-img{
+.header-img {
     width: 70%;
 }
 
-.header-img img{
+.header-img img {
     width: 650px;
 }
 
-.info{
+.info {
     padding: 100px;
     display: flex;
     justify-content: space-between;
 }
 
-.info-1{
+.info-1 {
     width: 300px;
     padding: 15px 25px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-
 }
 
-.info-1 img{
+.info-1 img {
     width: 35px;
-
 }
 
-.info-1 h3{
+.info-1 h3 {
     font-size: 18px;
     color: #000;
     margin-bottom: 10px;
 }
 
-.info-1 p{
+.info-1 p {
     font-size: 16px;
     color: #000;
+}
+
+.review-section {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.review-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 150px;
+}
+
+.review-section h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.review-section textarea {
+    width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+.review-section input[type='number'] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.review-section button[type='submit'] {
+    width: 50%;
+    padding: 12px 20px;
+    font-size: 18px;
+    background-color: #FF9F0D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review-section button[type='submit']:hover {
+    background-color: #EE9003;
+}
+
+.review-section p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ff0000;
+}
+
+/* Estilos para el contenedor de reviews */
+.reviews-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.reviews-container h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.review {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.review .rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.star-rating-readonly {
+    font-size: 16px;
+    color: #ffd700;
 }

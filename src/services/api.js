@@ -55,7 +55,7 @@ export const getOrgId = async(orgId) =>{
 //Buscar usuario por coincidencia
 export const searchUsers = async (query) => {
     try {
-        const response = await apiClient.get(`/user/search/users?query=${query}`);
+        const response = await apiClient.get(/user/search/users?query=${query});
         return response.data;
     } catch (error) {
         console.error("Error searching users:", error);
@@ -66,7 +66,7 @@ export const searchUsers = async (query) => {
 //Buscar organizacion por coincidencia
 export const searchOrganizations = async (query) => {
     try {
-        const response = await apiClient.get(`/org/search/organizations?query=${query}`);
+        const response = await apiClient.get(/org/search/organizations?query=${query});
         return response.data;
     } catch (error) {
         console.error("Error searching organizations:", error);
@@ -293,3 +293,44 @@ export const assignVolunteer = async (volunteeringId) => {
 }
 
 
+
+
+export const registerOrganizationReview = async (reviewData) => {
+    try {
+        const response = await apiClient.post('/revew/newRevew', reviewData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error registering organization review:', error);
+        throw error;
+    }
+};
+// funcion para mostrar las revews de la organizacion(no funca)
+export const getAllReviews = async (orgaId) => {
+    try {
+        const response = await apiClient.post('/review/getOrganizationReviews',  orgaId , {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener las reviews:', error);
+        throw error; 
+    }
+};
+// Funcion para mostrar todas las revews(esta mal hecho pero bueh)
+export const getRevew = async() =>{
+    try {
+        const response = await apiClient.get('/revew/getAllReviews')
+        return response.data
+    } catch (error) {
+        error: true,
+        error
+    }
+}
