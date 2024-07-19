@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
+import { useVolunteer } from '../shared/hooks/useVolunteer';
+import { useParams,  } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -15,28 +17,17 @@ export const MapVolu = () => {
     const [userPosition, setUserPosition] = useState(null);
     const [positionLoaded, setPositionLoaded] = useState(false);
     const [volunteerLocations, setVolunteerLocations] = useState([]);
+    const { selectedVolu, getVolunteer } = useVolunteer();
+    const { id } = useParams();
+
+    
 
     useEffect(() => {
-        // Obtener la posicion del usuario
-        navigator.geolocation.getCurrentPosition((pos) => {
-            const { latitude, longitude } = pos.coords;
-            setUserPosition([latitude, longitude]);
+        const fetchData = async () => {
+            await getVolunteer(id);
             setPositionLoaded(true);
-        }, (err) => {
-            console.error("Error getting user position:", err);
-            setPositionLoaded(true); 
-        });
-    }, []);
-
-    useEffect(() => {
-        // Simulacion de voluntariados
-        const simulatedVolunteers = [
-            { id: 1, position: [51.505, -0.09], title: "Voluntariado 1" },
-            { id: 2, position: [51.51, -0.1], title: "Voluntariado 2" },
-            { id: 3, position: [51.515, -0.11], title: "Voluntariado 3" },
-        ];
-
-        setVolunteerLocations(simulatedVolunteers);
+        };
+        fetchData();
     }, []);
 
     if (!positionLoaded) {
@@ -44,8 +35,8 @@ export const MapVolu = () => {
     }
 
     // Centra el mapa en la ubucacion del usuario
-    const mapCenter = userPosition ? userPosition : [40.416775, -3.70379];
-    const zoomLevel = userPosition ? 10 : 6;
+    const mapCenter = selectedVolu.volunteer.location ? selectedVolu.volunteer.location : [];
+    const zoomLevel =  90 ;
 
     return (
         <MapContainer center={mapCenter} zoom={zoomLevel} scrollWheelZoom={false} style={{ height: "500px", width: "100%" } }>
@@ -54,12 +45,12 @@ export const MapVolu = () => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
 
-            {userPosition && (
+            {selectedVolu.volunteer.location && (
                 <>
-                    <Marker position={userPosition}>
+                    <Marker position={selectedVolu.volunteer.location}>
                         <Popup>Tu ubicación actual</Popup>
                     </Marker>
-                    <Circle center={userPosition} radius={10000} fillColor="#ff7800" fillOpacity={0.2} stroke={false} />
+                    <Circle center={selectedVolu.volunteer.location} radius={1000} fillColor="#ff7800" fillOpacity={0.2} stroke={false} />
                 </>
             )}
 

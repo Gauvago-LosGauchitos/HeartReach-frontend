@@ -243,19 +243,109 @@ export const listVolunteers = async () => {
 //Obtener datos de un voluntariado
 export const getVolunteerById = async (id) => {
     try {
-        const response = await apiClient.get('/volu/getVolunteering', {id}, {
+        const response = await apiClient.get(`/volu/getVolunteering/${id}`, {
             headers: {
                 'Authorization': localStorage.getItem('authToken') // Obtener el token del localStorage
             }
-        })
-        return response.data
-        
+        });
+        return response.data;
     } catch (error) {
-        console.error('Error buscando el voluntariado', error)
-        toast.error(error.response.data.message)
+        console.error('Error buscando el voluntariado', error);
+        toast.error(error.response.data.message);
         throw error;
     }
+}
 
+//obtener direccion de la latitud y longitud
+export const reverseGeocode = async (lat, lng) => {
+    try {
+        const response = await axios.get(`https://nominatim.openstreetmap.org/reverse`, {
+            params: {
+                format: 'json',
+                lat,
+                lon: lng
+            }
+        });
+        return response.data.display_name;
+    } catch (error) {
+        console.error('Error en la geocodificación inversa', error);
+        return null;
+    }
+};
+
+//Asignarse a un voluntariado
+export const assignVolunteer = async (volunteeringId) => {
+    console.log(volunteeringId)
+    try {
+        const response = apiClient.put('/volu/assignVolunteering', {volunteering: volunteeringId}, {
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+        return response
+        
+    } catch (error) {
+        console.error('Error asignandose al voluntariado', error);
+        toast.error(error.response.data.message);
+        throw error;
+        
+    }
+}
+
+
+
+
+export const registerOrganizationReview = async (reviewData) => {
+    try {
+        const response = await apiClient.post('/revew/newRevew', reviewData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error registering organization review:', error);
+        throw error;
+    }
+};
+
+
+// funcion para mostrar las revews de la organizacion(no funca)
+export const getAllReviews = async (orgaId) => {
+    try {
+        const response = await apiClient.post('/review/getOrganizationReviews',  orgaId , {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('authToken')
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener las reviews:', error);
+        throw error; 
+    }
+};
+
+// Funcion para mostrar todas las revews(esta mal hecho pero bueh)
+export const getRevew = async() =>{
+    try {
+        const response = await apiClient.get('/revew/getAllReviews')
+        return response.data
+    } catch (error) {
+        error: true,
+        error
+    }
+}
+
+
+export const getlistarVolunteeringDisponiblesEnCurso = async (id) => {
+    try {
+        const response = await apiClient.post('/volu/listarVolunteeringDisponiblesEnCurso', {organizationId:id});
+        return response.data; 
+    } catch (error) {
+        return { error: true, message: error.message }; 
+    }
 }
 
 export const getPendingOrgs = async () => {

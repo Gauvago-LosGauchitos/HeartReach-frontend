@@ -11,13 +11,9 @@ export const VoluntersView = () => {
   const { volunteers, isLoading } = useVolunteer();
   const navigate = useNavigate();
 
-  // Verificar la estructura de los datos
   const hanadlerInfoVolunteer = (id) => {
     navigate(`/infoVoluntering/${id}`);
   }
-
-  // Verificar si org.organizations es un array o un objeto
-  
 
   console.log('Voluntariados array:', volunteers);
 
